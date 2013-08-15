@@ -19,6 +19,7 @@ gem 'posix-spawn'
 group :development do
   gem 'foreman'
   gem 'tracer_bullets'
+  gem 'better_errors'
 end
 
 group :staging, :production do
