@@ -1,0 +1,7 @@
+<% if signed_in? %>
+  <p>You are signed in as <%= current_user.username %>. Want to <%= link_to "Sign out", sign_out_path %>?</p>
+  <p>Here are your <%= link_to "photos", photos_path %></p>
+  <p>Here is your <%= link_to "cart", cart_path %> and <%= link_to "order history", orders_path %></p>
+<% else %>
+  <p>Why hello there, you should <%= link_to "Sign in", sign_in_path %> to get started.</p>
+<% end %>
