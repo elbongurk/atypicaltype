@@ -19,6 +19,9 @@ class PhotosController < ApplicationController
     # 3) We should set far cache headers varied by params so our CDN will cache
     @photo = current_user.photo(params[:id])
 
-    respond_with(@photo)
+    contrast = params[:contrast].to_i
+    bright = params[:bright].to_i
+
+    respond_with(@photo, contrast: contrast, bright: bright)
   end
 end

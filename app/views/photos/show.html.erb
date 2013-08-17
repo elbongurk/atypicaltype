@@ -1,14 +1,16 @@
-<div class="scene scene-1">
+<div class="scene scene-1" data-photo-url="<%= photo_url(@photo.id, format: :png) %>">
   <div class="panels">
     <% %w(front top bottom left right).each do |side| %>
       <div style="background-image: url(<%= photo_url(@photo.id, format: :png) %>);" class="panel panel-<%= side %>"></div>
     <% end %>
   </div>
   <div class="floor"></div>
-  <div class="scene-selector">
+  <div class="toolbar">
+    <button name="bright" value="0">B</button>
     <input type="radio" name="scene" id="scene-1" value="1" checked>
     <input type="radio" name="scene" id="scene-2" value="2">
     <input type="radio" name="scene" id="scene-3" value="3">
+    <button name="contrast" value="0">C</button>
   </div>
 </div>  
 <p>You should order something</p>

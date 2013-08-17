@@ -10,12 +10,12 @@ class Photo
     end
   end
 
-  def to_png
-    renderer(:png)
+  def to_png(options = {})
+    renderer(:png, options)
   end
 
-  def to_pdf
-    renderer(:pdf)
+  def to_pdf(options = {})
+    renderer(:pdf, options)
   end
 
   protected
@@ -26,8 +26,8 @@ class Photo
 
   private
 
-  def renderer(type)
-    Renderer.new(self.url, self.width, self.height, type: type)
+  def renderer(type, options = {})
+    Renderer.new(self.url, self.width, self.height, options.merge(type: type))
   end
 
 end

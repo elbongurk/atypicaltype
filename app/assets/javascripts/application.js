@@ -1,14 +1,12 @@
 //= require jquery
 //= require jquery_ujs
 
+//= require_self
+//= require_tree .
 
-var changeScene = function(event) {
-  var sceneNum = $(this).val();
-  var scene = $(".scene");
-  $(".scene").removeClass("scene-1 scene-2 scene-3").addClass("scene-" + sceneNum);
-}
-
-
-$(document).ready(function() {
-  $(".scene-selector input[name='scene']").on("change", changeScene);  
-});
+(function($, undefined) {
+  $(document).ready(function() {
+    var sceneElement = scene.init();
+    toolbar.init(sceneElement);
+  });
+})(window.jQuery);

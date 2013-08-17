@@ -36,11 +36,14 @@
   padding-bottom: 30%;
 }
 
-.scene-selector {
+.toolbar {
   text-align: center;
   padding: 10px 0;
   input {
     margin: 3px;
+  }
+  button {
+    padding: 5px;
   }
 }
 
@@ -68,6 +71,7 @@
 .panel {
   position: absolute;
   background-repeat: no-repeat;
+  background-color: #efefef;
 }
 
 .panel-front {
