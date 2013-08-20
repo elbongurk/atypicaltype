@@ -19,6 +19,7 @@ gem 'posix-spawn'
 group :development do
   gem 'foreman'
   gem 'tracer_bullets'
+  gem 'binding_of_caller'
   gem 'better_errors'
 end
 

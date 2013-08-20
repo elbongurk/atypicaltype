@@ -28,6 +28,9 @@ class Renderer
     ord.close
     Process.waitpid(pid)
 
+    # TODO: We could possibly store the pixel values from stream into memcached
+    #       We would need to test obviously how fast that is vs just using stream
+
     context.render(bright: self.bright, contrast: self.contrast)
 
     ird, iwr = IO.pipe
@@ -77,6 +80,8 @@ class Renderer
     end
 
     ord.close
+
+    # TODO: See what can be done to speed up this process, perhaps play with the read buffer size
 
     Process.waitpid(pid)
   end
