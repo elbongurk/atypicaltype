@@ -9,7 +9,10 @@ AtypicalType::Application.routes.draw do
     resources :line_items, only: [:create, :update, :destroy]
   end
 
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:new, :index, :show] do
+    get 'confirm', on: :new
+  end
 
-  root 'pages#welcome'
+  root to: 'pages#welcome'
 end
+

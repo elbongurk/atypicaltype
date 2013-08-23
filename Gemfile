@@ -2,15 +2,17 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails', '>= 4.0.0'
-gem 'bourbon'
-gem 'sass-rails'
-gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'uglifier'
-
 gem 'pg'
 gem 'unicorn'
+
+gem 'rails', github: 'rails/rails', branch: '4-0-stable'
+gem 'delayed_job_active_record'
+
+gem 'bourbon'
+gem 'neat'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'aalib', :github => 'elbongurk/aalib'
 gem 'instagram'

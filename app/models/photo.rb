@@ -1,12 +1,9 @@
-class Photo
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
+class Photo < ActiveRecord::Base
+  belongs_to :user
 
-  attr_accessor :id, :url, :width, :height
-
-  def initialize(attributes = {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
+  def line_items
+    Product.all.each.map do |product|
+      LineItem.new(product_id: id, photo_id: self.id)
     end
   end
 
@@ -18,16 +15,9 @@ class Photo
     renderer(:pdf, options)
   end
 
-  protected
-
-  def persisted?
-    false
-  end
-
   private
 
   def renderer(type, options = {})
     Renderer.new(self.url, self.width, self.height, options.merge(type: type))
   end
-
 end

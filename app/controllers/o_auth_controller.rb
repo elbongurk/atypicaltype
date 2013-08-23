@@ -8,7 +8,13 @@ class OAuthController < ApplicationController
     redirect_to Instagram.authorize_url(:redirect_uri => oauth_callback_url)
   end
 
+  
+  def hook
+    
+  end
+
   # TODO: Handle the case where the user denies access
+  # TODO: We should be "OnBoarding" user at this point
   def callback
     rsp = Instagram.get_access_token(params[:code], :redirect_uri => oauth_callback_url)
 
@@ -19,7 +25,7 @@ class OAuthController < ApplicationController
     end
 
     user.save
-    
+
     sign_in user
 
     redirect_back_or photos_url
