@@ -1,7 +1,7 @@
 <p>I am a cart with ID <%= cart.id %>!</p>
 
 <% cart.line_items.each do |line_item|  %>
-  <p>I'm a <%= line_item.product.size %> with a quantity of <%= line_item.quantity %></p>
+  <p>I'm a <%= line_item.product.size %> <%= line_item.photo_id %> with a quantity of <%= line_item.quantity %></p>
 <% end %>
 
 <p><%= link_to "Checkout!", new_order_path %></p>
