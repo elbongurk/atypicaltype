@@ -8,17 +8,16 @@
     <%= csrf_meta_tags %>
   </head>
   <body data-controller="<%= controller_name =%>" data-action="<%= action_name %>">
-    <header>
-	    <h6 id="ship" class="desktop"><i class="icon-truck"></i>  free domestic shipping!</h6>
-      <%= link_to "sign in", sign_in_path, id: "signin" %>
-      <a href="#menu"><%= image_tag "hamburger.png", id: "hamburger", class: "mobile" %></a>
-      <%= link_to image_tag("logo.png", id: "logo"), root_path %>
-      <nav id="desktop" class="desktop">
-        <a href="#">Contact</a>
-        <a href="#">About</a>
-        <a href="#">Blog</a>
-      </nav>
-    </header>
+	  <div class="marketing-notice"><i class="icon-truck"></i> free domestic shipping!</div>
+    <nav>
+      <h1><%= link_to image_tag("logo.png"), root_path %></h1>
+      <ul>
+        <li><%= link_to "Contact", "#" %></li>
+        <li><%= link_to "About", "#" %></li>
+        <li><%= link_to "Blog", "#" %></li>
+        <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#menu" %></li>
+      </ul>
+    </nav>
     <%= yield %>
     <footer>
 	    <div id="f1">
