@@ -11,15 +11,23 @@ nav {
 
   h1 {
     @include span-columns(3 of 4);
+    padding: 0 10px;
   }
 
-  nav {
+  ul {
     @include span-columns(1 of 4);
-
-    li:not(.go-nav) {
+    text-align: center;
+    li {
       display: none;
     }
+    li.go-nav {
+      display: list-item;
+    }
   }
+}
+
+header {
+  @include outer-container;
 }
 
 
