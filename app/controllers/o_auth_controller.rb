@@ -14,7 +14,6 @@ class OAuthController < ApplicationController
   end
 
   # TODO: Handle the case where the user denies access
-  # TODO: We should be "OnBoarding" user at this point
   def callback
     rsp = Instagram.get_access_token(params[:code], :redirect_uri => oauth_callback_url)
 

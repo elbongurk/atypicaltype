@@ -1,15 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>atypical type</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>atypical type</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+	    <h6 id="ship" class="desktop"><i class="icon-truck"></i>  free domestic shipping!</h6>
+      <%= link_to "sign in", sign_in_path, id: "signin" %>
+      <a href="#menu"><%= image_tag "hamburger.png", id: "hamburger", class: "mobile" %></a>
+      <%= link_to image_tag("logo.png", id: "logo"), root_path %>
+      <nav id="desktop" class="desktop">
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+      </nav>
+    </header>
+    <%= yield %>
+    <footer>
+	    <div id="f1">
+        <h3>Atypical Type has been created with &hearts; by</h3>
+        <h3><%= link_to image_tag("gurkie.png"), "http://elbongurk.com", target: "_blank" %></h3>
+        <p class="copy_desktop, desktop">&copy; 2013 Elbongürk, LLC</p>
+	    </div>
+      <div id="f3">
+		    <h4 id="menu">Atypical Type</h4>
+    	  <ul>
+      	  <li class="mobile"><%= link_to "Sign In", sign_in_path %></li>
+				  <li class="mobile"><a href="#">Blog</a></li>
+          <li class="mobile"><a href="#">About</a></li>
+          <li class="mobile"><a href="#">Contact Us</a></li>
+          <li><%= link_to "Terms and Conditions", terms_path %></li>
+          <li><%= link_to "Privacy Policy", privacy_path %></li>
+        </ul>
+      </div>
+      <div id="f4">
+		    <h4>Keep in touch for news and offers</h4>
+        <ul id="smedia" class="desktop">
+          <li><i class="icon-envelope icon-2x"></i></li>
+          <li><i class="icon-twitter-sign icon-2x"></i></li>
+          <li><i class="icon-pinterest-sign icon-2x"></i></li>
+          <li><i class="icon-github-sign icon-2x"></i></li>
+          <li><i class="icon-facebook-sign icon-2x"></i></li>
+          <li><i class="icon-instagram icon-2x"></i></li>
+          <li><i class="icon-flickr icon-2x"></i></li>
+        </ul>
+        <ul id="smedia_mobile" class="mobile">
+          <li><i class="icon-envelope icon-4x"></i></li>
+          <li><i class="icon-twitter-sign icon-4x"></i></li>
+          <li><i class="icon-pinterest-sign icon-4x"></i></li>
+          <li><i class="icon-github-sign icon-4x"></i></li>
+        </ul>
+        <ul id="smedia_mobile" class="mobile">
+          <li><i class="icon-facebook-sign icon-4x"></i></li>
+          <li><i class="icon-instagram icon-4x"></i></li>
+          <li><i class="icon-flickr icon-4x"></i></li>
+        </ul>
+        <h5 id="proud_desktop" class="desktop">Proudly imagined, created, developed, printed and assembled in the USA.</h5>
+	    </div>
+      <div id="f5"><h5 id="proud_mobile" class="mobile">Proudly imagined, created, developed, printed and assembled in the USA.</h5>
+  	    <p class="mobile" id="copy_mobile">&copy; 2013 Elbongürk, LLC</p>
+      </div>
+      <div id="f6">
+        <p>This product uses the Instagram API but is not endorsed or certified by Instagram.</p>
+      </div> 
+    </footer>
+  </body>
 </html>

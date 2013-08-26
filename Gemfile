@@ -10,6 +10,7 @@ gem 'delayed_job_active_record'
 
 gem 'bourbon'
 gem 'neat'
+gem "font-awesome-rails"
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'

@@ -4,11 +4,7 @@ class LineItemsController < ApplicationController
   def create
     line_item = current_user.cart.line_items.where(create_params).first_or_initialize
 
-    if line_item.new_record?
-      line_item.cart_id = current_user.cart.id
-    else
-      line_item.quantity += 1
-    end
+    line_item.quantity += 1 if line_item.persisted?
 
     line_item.save
 

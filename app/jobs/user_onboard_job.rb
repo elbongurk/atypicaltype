@@ -1,5 +1,5 @@
 class UserOnboardJob < Struct.new(:user_id)
-  # We need to continously 
+  # We need to continously do this
   def perform
     user = User.find(user_id)
 

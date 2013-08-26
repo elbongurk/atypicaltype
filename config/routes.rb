@@ -1,7 +1,7 @@
 AtypicalType::Application.routes.draw do
   get 'oauth/callback', to: 'o_auth#callback'
-  match 'sign_in' => 'o_auth#connect', :as => 'sign_in', :via => :get
-  match 'sign_out' => 'o_auth#disconnect', :as => 'sign_out', :via => :get
+  get 'sign_in', to: 'o_auth#connect'
+  get 'sign_out', to: 'o_auth#disconnect'
 
   resources :photos, only: [:index, :show]
 
@@ -13,6 +13,8 @@ AtypicalType::Application.routes.draw do
     get 'confirm', on: :new
   end
 
+  get 'privacy', to: 'pages#privacy'
+  get 'terms', to: 'pages#terms'
   root to: 'pages#welcome'
 end
 

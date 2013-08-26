@@ -1,7 +1,47 @@
-<% if signed_in? %>
-  <p>You are signed in as <%= current_user.username %>. Want to <%= link_to "Sign out", sign_out_path %>?</p>
-  <p>Here are your <%= link_to "photos", photos_path %></p>
-  <p>Here is your <%= link_to "cart", cart_path %> and <%= link_to "order history", orders_path %></p>
-<% else %>
-  <p>Why hello there, you should <%= link_to "Sign in", sign_in_path %> to get started.</p>
-<% end %>
+<article class="welcome">
+	<h2>TURN YOUR <span class="bluetext">INSTAGRAM PHOTOS</span> INTO <span class="bluetext">CLEVER</span>, UNEXPECTED, BEAUTIFUL, <span class="bluetext">TYPOGRAPHIC</span> WORKS OF <span class="bluetext">ART</span></h2>
+  <%= image_tag "hero2.png" %>
+  <p><%= link_to "get started", sign_in_path, class: "button" %></p>
+</article>
+<section class="greybkg">
+  <article class="maxwidth welcome">
+  	<h3>3 Simple Steps</h3>
+    <div class="leftmost">
+      <h4 class="bluetext">1</h4>
+      <p class="step, bluetext">select a photo from instagram. Any photo will work, but we find portraits to be especially amazing</p>
+      <p class="right"><%= image_tag "hand_iphone.jpg", class: "stepimg" %></p>
+    </div>
+    <div>
+      <h4 class="bluetext">2</h4>
+      <p class="step, bluetext">your photo is coverted into an original grid of type 150 by 150 characters<span class="sidenote"> ( that's 22,500 total characters! )</span></p>
+      <p class="right"><%= image_tag "magnify2.png",  class: "stepimg" %></p>
+    </div>
+    <div class="rightmost">
+      <h4 class="bluetext">3</h4>
+      <p class="step, bluetext">the finished product is printed on high quality gallery wrap canvas and shipped to your door</p>
+      <p class="right"><%= image_tag "hung2.jpg",  class: "stepimg" %></p>   
+    </div>
+  </article>
+</section>
+<article class="welcome">
+	<section id="deal">
+    <%= image_tag "topcanvas2.jpg" %>
+    <h3>So What's The Deal?</h3>
+    <p>We take your original instagram photograph and using our own special blend of magic, turn it into a grid of typographic characters <span class="italic">(letters, numbers, punctuation, etc)</span>.</p>
+    <p>Each 12 x 12 inch canvas has 150 type characters both across and down.  These 22,500 characters are each specifically chosen to match a tiny bit of your original photo. There are approximately ten characters per inch of canvas. <span class="italic">(100 per square in)</span></p>
+    <p> Up close you can easily see the individual characters <span class="italic">(see photo above)</span>, but as you move further and further back  the type blends together and your photograph resembles a traditional black and white photograph.</p>
+    <p>No matter your distance from the canvas your image is a beautiful, yet mesmerizing, and intreging composition.</p>
+    <%= image_tag "bottomcanvas.jpg" %>
+		<h3 class="ideas bluetext">Just a Few More Details...</h3>
+    <%= image_tag "sample_corner.jpg", class: "sample" %>
+    <%= image_tag "sample_me_edge.jpg", class: "sample" %>
+    <%= image_tag "sample_double.jpg", class: "sample" %>
+    <%= image_tag "sample_close2.jpg", class: "sample" %>
+    <%= image_tag "sample_close.jpg", class: "sample" %>
+    <%= image_tag "sample_us.jpg", class: "sample" %>
+    <%= image_tag "sample_hands.jpg", class: "sample" %>
+    <%= image_tag "sample_lego3.jpg", class: "sample" %>
+		<h3 class="ideas">Your Walls are Waiting.</h3>
+	</section>
+	<p><%= link_to "get started", sign_in_path, class: "button endbtn" %></p>
+</article>
