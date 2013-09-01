@@ -3,51 +3,53 @@
   <figure>
     <%= image_tag "hero2.png" %>
   </figure>
-  <p><%= link_to "get started", sign_in_path, class: "button" %></p>
+  <p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
 </header>
-<section class="greybkg">
-  <article class="maxwidth welcome">
-  	<h3>3 Simple Steps</h3>
-    <div class="leftmost">
-      <h4 class="bluetext">1</h4>
-      <p class="step, bluetext">select a photo from instagram. Any photo will work, but we find portraits to be especially amazing</p>
-      <p class="right"><%= image_tag "hand_iphone.jpg", class: "stepimg" %></p>
-    </div>
-    <div>
-      <h4 class="bluetext">2</h4>
-      <p class="step, bluetext">your photo is coverted into an original grid of type 150 by 150 characters<span class="sidenote"> ( that's 22,500 total characters! )</span></p>
-      <p class="right"><%= image_tag "magnify2.png",  class: "stepimg" %></p>
-    </div>
-    <div class="rightmost">
-      <h4 class="bluetext">3</h4>
-      <p class="step, bluetext">the finished product is printed on high quality gallery wrap canvas and shipped to your door</p>
-      <p class="right"><%= image_tag "hung2.jpg",  class: "stepimg" %></p>   
-    </div>
-  </article>
-</section>
-<article class="welcome">
-	<section id="deal">
-    <%= image_tag "topcanvas2.jpg" %>
-    <h3>So What's The Deal?</h3>
-    <p>We take your original instagram photograph and using our own special blend of magic, turn it into a grid of typographic characters <span class="italic">(letters, numbers, punctuation, etc)</span>.</p>
-    <p>Each 12 x 12 inch canvas has 150 type characters both across and down.  These 22,500 characters are each specifically chosen to match a tiny bit of your original photo. There are approximately ten characters per inch of canvas. <span class="italic">(100 per square in)</span></p>
-    <p> Up close you can easily see the individual characters <span class="italic">(see photo above)</span>, but as you move further and further back  the type blends together and your photograph resembles a traditional black and white photograph.</p>
-    <p>No matter your distance from the canvas your image is a beautiful, yet mesmerizing, and intreging composition.</p>
-    <%= image_tag "bottomcanvas.jpg" %>
-		<h3 class="ideas bluetext">Just a Few More Details...</h3>
-    <%= image_tag "sample_corner.jpg", class: "sample" %>
-    <%= image_tag "sample_me_edge.jpg", class: "sample" %>
-    <%= image_tag "sample_double.jpg", class: "sample" %>
-    <%= image_tag "sample_close2.jpg", class: "sample" %>
-    <%= image_tag "sample_us.jpg", class: "sample" %>
-    <%= image_tag "sample_hands.jpg", class: "sample" %>
-    <%= image_tag "sample_lego3.jpg", class: "sample" %>
-    <%= image_tag "sample_lego4.jpg", class: "sample" %>
-    <%= image_tag "sample_lego5.jpg", class: "sample" %>
-    <%= image_tag "sample_lego6.jpg", class: "sample" %>
-    <%= image_tag "sample_lego7.jpg", class: "sample" %>
-    <%= image_tag "sample_lego8.jpg", class: "sample" %>
-		<h3 class="ideas">Your Walls are Waiting.</h3>
-	</section>
-	<p><%= link_to "get started", sign_in_path, class: "button endbtn" %></p>
+<article class="steps">
+  <h3>3 Simple Steps</h3>
+  <section class="step step-1">
+    <h4>1</h4>
+    <p>Select a photo from instagram. Any photo will work, but we find portraits to be especially amazing.</p>
+    <figure><%= image_tag "hand_iphone.jpg" %></figure>
+  </section>
+  <section class="step step-2">
+    <h4>2</h4>
+    <p>Your photo is coverted into an original grid of type 150 by 150 characters.</p>
+    <figure><%= image_tag "magnify2.png" %></figure>
+  </section>
+  <section class="step step-3">
+    <h4>3</h4>
+    <p>The finished product is printed on high quality gallery wrap canvas and shipped to your door.</p>
+    <figure><%= image_tag "hung2.jpg" %></figure>
+  </section>
 </article>
+<article class="explain">
+  <figure><%= image_tag "topcanvas2.jpg" %></figure>
+  <h3>So What's The Deal?</h3>
+  <p>We take your original instagram photograph and using our own special blend of magic, turn it into a grid of typographic characters.</p>
+  <p>Each 12 x 12 inch canvas has 150 type characters both across and down.  These 22,500 characters are each specifically chosen to match a tiny bit of your original photo. There are approximately 100 characters per square inch of canvas.</p>
+  <p> Up close you can easily see the individual characters, but as you move further and further back  the type blends together and your photograph resembles a traditional black and white photograph.</p>
+  <p>No matter your distance from the canvas your image is a beautiful, yet mesmerizing, and intreging composition.</p>
+  <figure><%= image_tag "bottomcanvas.jpg" %></figure>
+</article>
+<article class="gallery">
+	<h3>Just a Few More Details...</h3>
+  <ul>
+    <li><%= image_tag "sample_corner.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_me_edge.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_double.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_close2.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_us.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_hands.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_lego3.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_lego4.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_lego5.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_lego6.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_lego7.jpg", class: "sample" %></li>
+    <li><%= image_tag "sample_lego8.jpg", class: "sample" %></li>
+  </ul>
+</article>
+<article class="closer">
+	<h3>Your Walls are Waiting.</h3>
+	<p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
+</article>  

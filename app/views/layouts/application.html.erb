@@ -8,64 +8,47 @@
     <%= csrf_meta_tags %>
   </head>
   <body data-controller="<%= controller_name =%>" data-action="<%= action_name %>">
-	  <div class="marketing-notice"><i class="icon-truck"></i> free domestic shipping!</div>
-    <nav>
+	  <section class="marketing"><i class="icon-truck"></i> free domestic shipping!</section>
+    <nav id="top-menu">
       <h1><%= link_to image_tag("logo.png"), root_path %></h1>
       <ul>
         <li><%= link_to "Contact", "#" %></li>
         <li><%= link_to "About", "#" %></li>
         <li><%= link_to "Blog", "#" %></li>
-        <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#menu" %></li>
+        <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
       </ul>
     </nav>
     <%= yield %>
     <footer>
-	    <div id="f1">
-        <h3>Atypical Type has been created with &hearts; by</h3>
-        <h3><%= link_to image_tag("gurkie.png"), "http://elbongurk.com", target: "_blank" %></h3>
-        <p class="copy_desktop, desktop">&copy; 2013 Elbongürk, LLC</p>
-	    </div>
-      <div id="f3">
-		    <h4 id="menu">Atypical Type</h4>
+      <section class="copyright">
+        <h3>Atypical Type has been created with &hearts; by:</h3>
+        <p><%= link_to image_tag("gurkie.png"), "http://elbongurk.com" %></p>
+        <p>Proudly imagined, developed, printed and assembled in the USA.</p>
+        <p>&copy; 2013 Elbongürk, LLC</p>
+      </section>
+      <nav id="bottom-menu">
+        <h3>Atypical Type</h3>
     	  <ul>
-      	  <li class="mobile"><%= link_to "Sign In", sign_in_path %></li>
-				  <li class="mobile"><a href="#">Blog</a></li>
-          <li class="mobile"><a href="#">About</a></li>
-          <li class="mobile"><a href="#">Contact Us</a></li>
-          <li><%= link_to "Terms and Conditions", terms_path %></li>
+      	  <li><%= link_to "Sign In", sign_in_path %></li>
+				  <li><a href="#">Blog</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><%= link_to "Terms & Conditions", terms_path %></li>
           <li><%= link_to "Privacy Policy", privacy_path %></li>
         </ul>
-      </div>
-      <div id="f4">
-		    <h4>Keep in touch for news and offers</h4>
-        <ul id="smedia" class="desktop">
-          <li><i class="icon-envelope icon-2x"></i></li>
-          <li><i class="icon-twitter-sign icon-2x"></i></li>
-          <li><i class="icon-pinterest-sign icon-2x"></i></li>
-          <li><i class="icon-github-sign icon-2x"></i></li>
-          <li><i class="icon-facebook-sign icon-2x"></i></li>
-          <li><i class="icon-instagram icon-2x"></i></li>
-          <li><i class="icon-flickr icon-2x"></i></li>
+      </nav>
+      <section class="social">
+		    <h3>Keep in touch for news and offers</h3>
+        <ul>
+          <li><a href="http://twitter.com"><i class="icon-twitter-sign"></i></a></li>
+          <li><i class="icon-instagram"></i></li>
+          <li><i class="icon-pinterest-sign"></i></li>
+          <li><i class="icon-facebook-sign"></i></li>
         </ul>
-        <ul id="smedia_mobile" class="mobile">
-          <li><i class="icon-envelope icon-4x"></i></li>
-          <li><i class="icon-twitter-sign icon-4x"></i></li>
-          <li><i class="icon-pinterest-sign icon-4x"></i></li>
-          <li><i class="icon-github-sign icon-4x"></i></li>
-        </ul>
-        <ul id="smedia_mobile" class="mobile">
-          <li><i class="icon-facebook-sign icon-4x"></i></li>
-          <li><i class="icon-instagram icon-4x"></i></li>
-          <li><i class="icon-flickr icon-4x"></i></li>
-        </ul>
-        <h5 id="proud_desktop" class="desktop">Proudly imagined, created, developed, printed and assembled in the USA.</h5>
-	    </div>
-      <div id="f5"><h5 id="proud_mobile" class="mobile">Proudly imagined, created, developed, printed and assembled in the USA.</h5>
-  	    <p class="mobile" id="copy_mobile">&copy; 2013 Elbongürk, LLC</p>
-      </div>
-      <div id="f6">
+      </section>
+      <section class="notices">
         <p>This product uses the Instagram API but is not endorsed or certified by Instagram.</p>
-      </div> 
+      </section>
     </footer>
   </body>
 </html>
