@@ -1,5 +1,13 @@
+$tablet: new-breakpoint(44em, 6);
+
 .marketing {
   display: none;    
+  @include media($tablet) {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+  }
 }
 
 #top-menu {
@@ -12,17 +20,30 @@
   h1 {
     @include span-columns(3 of 4);
     padding: 0 35px;
+    @include media($tablet) {
+      @include span-columns(2 of 6);
+      padding: 0 0 0 35px;
+    }
   }
 
   ul {
     @include span-columns(1 of 4);
     @include omega;
-    text-align: center;
     li {
       display: none;
     }
     li.go-nav {
+      text-align: center;
       display: list-item;
+    }
+    @include media($tablet) {
+      @include span-columns(4 of 6);
+      li {
+        display: inline-block;        
+      }
+      li.go-nav {
+        display: none;
+      }
     }
   }
 }
