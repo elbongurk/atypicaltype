@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    sprintf('%.2f', subtotal + shipping + tax)
+    super || sprintf('%.2f', subtotal + shipping + tax)
   end
 
   def subtotal    
@@ -21,11 +21,11 @@ class Order < ActiveRecord::Base
   end
 
   def shipping
-    0.00
+    super || 0.00
   end
 
   def tax
-    tax_rate * (subtotal + shipping)
+    super || (tax_rate * (subtotal + shipping))
   end
 
   def tax_rate
