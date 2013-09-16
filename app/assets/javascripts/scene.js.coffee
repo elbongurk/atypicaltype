@@ -1,19 +1,17 @@
 class @Scene
-  @VALUES: ["0", "25", "50", "75"]
-
   @load: ->
     for scene in document.querySelectorAll(".scene")
       new Scene(scene)
       
   constructor: (@root) ->
-    @contrast = @root.querySelector("button[name=contrast]")
-    @contrast.addEventListener("click", this.changeContrast)
+    @contrast = document.getElementById("line_item_contrast")
+    @contrast.addEventListener("change", this.updateImage)
 
-    @brightness = @root.querySelector("button[name=bright]")
-    @brightness.addEventListener("click", this.changeBrightness)
+    @brightness = document.getElementById("line_item_brightness")
+    @brightness.addEventListener("change", this.updateImage)
 
     for sceneSelector in @root.querySelectorAll("input[name=scene]")
-      sceneSelector.addEventListener("click", this.changeScene)
+      sceneSelector.addEventListener("change", this.changeScene)
     
   changeScene: (event) =>
     @root.classList.remove("scene-1")
@@ -21,17 +19,7 @@ class @Scene
     @root.classList.remove("scene-3")
     @root.classList.add("scene-#{event.target.value}")
 
-  changeContrast: (event) =>
-    contrastIndex = (Scene.VALUES.indexOf(@contrast.value) + 1) % Scene.VALUES.length
-    @contrast.value = Scene.VALUES[contrastIndex] 
-    this.updateImage()
-
-  changeBrightness: (event) =>
-    brightnessIndex = (Scene.VALUES.indexOf(@brightness.value) + 1) % Scene.VALUES.length
-    @brightness.value = Scene.VALUES[brightnessIndex]
-    this.updateImage()
-
-  updateImage: ->
+  updateImage: (event) =>
     photoUrl = @root.getAttribute("data-photo-url")
     url = "url(#{photoUrl}?contrast=#{@contrast.value}&bright=#{@brightness.value})"
     for panel in @root.querySelectorAll(".panel")

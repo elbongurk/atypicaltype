@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>atypical type - email confirmation</title>
+  </head>
+  <body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">
+    <div style="max-width: 600px; margin: 25px auto; padding: 0 25px; font-family: sans-serif">
+      <table style="width: 600px">		
+		    <tbody>
+          <tr>
+            <td><a href="http://atypicaltype.com"><img width="300" height="51" src="http://www.art410.org/web01/images/logo.png" style="display: inline-block; margin-bottom: 10px" alt="atypical type logo"/></a></td>
+          </tr>
+		      <tr>
+            <td><h2 style="font-size: 1.75em">Congrats, your order has been confirmed!</h2></td>
+          </tr>		
+		      <tr>
+            <td><h2 style="font-weight: 400; margin-bottom: 25px">Order Number: <%= @order.id %></h2></td>
+          </tr>
+		      <tr>
+		        <td>
+              <p style="text-align: left; font-weight: 300; line-height: 150%">Hi!</p>
+			        <p style="text-align: left; font-weight: 300; line-height: 150%">Giving you a heads up that we successfully received your order!</p>
+			        <p style="text-align: left; font-weight: 300; line-height: 150%">It will be fulfilled and sent out in about 2-7 days, we'll send you another email when it's been sent out, along with the tracking number (tracking available for the US orders only).</p>
+			        <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 75px">Check the information below and make sure it's all correct, once your order's sent out, we won't be able to change anything!</p>
+		        </td>
+          </tr>	
+		      <tr>
+            <td>
+              <table style="margin-bottom: 25px; width: 600px; text-align: center;">
+			          <tbody>
+                  <tr>
+                    <th style="font-size: .85em; font-weight: 600">Preview</th>
+                    <th style="font-size: .85em; font-weight: 600">Product</th>
+                    <th style="font-size: .85em; font-weight: 600">Size</th>
+                    <th style="font-size: .85em; font-weight: 600">Qty</th>
+                    <th style="font-size: .85em; font-weight: 600">Price</th>
+			            </tr>
+                  <% @order.line_items.each do |line_item | %>
+                  <tr>
+                    <td><img width="100" height="100" src="http://www.art410.org/web01/images/legodate_preview.png" alt="preview image"/></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 30px"><%= line_item.product.good %></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= line_item.product.size %></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= line_item.quantity %></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= number_to_currency(line_item.product.price) %></td>
+                  </tr>
+                  <% end %>
+		            </tbody>
+              </table>
+		        </td>
+          </tr>
+		      <tr>
+            <td>
+		          <table style="text-align: left; background-color: #ccc; width: 600px; padding: 15px; margin-bottom: 50px">		
+		            <tbody>
+                  <tr>
+                    <td style="font-size: .85em; font-weight: 600">Recipient Name:</td>
+                    <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Subtotal:</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right">$69.00</td>
+                  </tr>
+		              <tr>
+                    <td style="font-size: .85em; font-weight: 300">Ryan Krug</td>
+                    <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Shipping:</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right">$0.00</td>
+                  </tr>	
+		              <tr>
+                    <td></td>
+                    <td style="font-size: .85em; font-weight: 600;padding-left: 200px">Tax:</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right">$0.00</td>
+                  </tr>	
+		              <tr>
+                    <td style="font-size: .85em; font-weight: 600">Shipping Address:</td>
+                    <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Total:</td>
+                    <td rowspan="2" style="font-weight: 400; font-size: 2em; text-align: right">$69.00</td>
+                  </tr>
+		              <tr>
+                    <td style="font-size: .85em; font-weight: 300">2825 College Ave</td>
+                    <td></td>
+                    <td></td>
+                  </tr>	
+		              <tr>
+                    <td style="font-size: .85em; font-weight: 300">Stevens Point, WI  54481</td>
+                    <td></td>
+                    <td></td>
+                  </tr>	
+		              <tr>
+                    <td style="font-size: .85em; font-weight: 300">United States</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+		            </tbody>
+              </table>
+		        </td>
+          </tr>
+		      <tr>
+            <td>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%">If anything's wrong, simply hit reply ASAP and let us know what should be changed.</p>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 50px">You won't receive a paper invoice/receipt, print the invoice from "Billing" section if you need a physical copy.</p>
+		          <p style="text-align: left; font-weight: 300; margin-bottom: 5px; margin-bottom: -10px">Hope you have a great day,</p>
+		          <p style="text-align: left; font-weight: 300">The Atypical Type Team</p>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 50px">You can call us at +1 (715) 555-5555 from 9am to 5pm (Central Standard time).</p>
+		        </td>
+          </tr>
+		      <tr>
+            <td><hr/></td>
+          </tr>
+		      <tr>
+            <td>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%">Manage your notification settings <a href="http://atypicaltype.com">here</a>.</p>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%">Elbongurk, LLC. 23 Park Ridge Drive Mailbox #6, Stevens Point, WI 54481, USA</p>
+		        </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -7,6 +7,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :width, null: false
       t.integer :height, null: false
       t.integer :user_id, null: false
+      t.timestamps null: false
     end
   end
 

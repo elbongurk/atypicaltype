@@ -6,6 +6,7 @@ gem 'pg'
 gem 'unicorn'
 
 gem 'rails', github: 'rails/rails', branch: '4-0-stable'
+gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 gem 'delayed_job_active_record'
 
 gem 'bourbon'
@@ -15,7 +16,9 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
-gem 'aalib', :github => 'elbongurk/aalib'
+gem 'aalib', github: 'elbongurk/aalib'
+gem 'printful', github: 'elbongurk/printful'
+gem 'braintree'
 gem 'instagram'
 gem 'posix-spawn'
 

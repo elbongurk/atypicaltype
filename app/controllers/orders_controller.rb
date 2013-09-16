@@ -1,20 +1,52 @@
 class OrdersController < ApplicationController
   before_filter :authorize
 
-  def new
-    @order = Order.new
-  end
-
   def index
     @orders = current_user.orders
   end
 
-  # TODO: this is where we would actually create the order and save it do the DB
-  # TODO: this is also where we would submit a job to printful for this order
-  def confirm
+  def show
+    @order = current_user.orders.where(id: params[:id]).where.not(transaction_id: nil).first
   end
 
-  def show
-    @order = current_user.orders.find(params[:id])
+  def new
+    @order = current_user.cart.orders.new(name: current_user.name)
+  end
+
+  def create
+    @order = current_user.cart.orders.new(create_params)
+
+    if @order.save
+      redirect_to purchase_order_url(@order)
+    else
+      render action: :new
+    end
+  end
+
+  def purchase
+    @order = current_user.orders.where(id: params[:id], transaction_id: nil).first    
+  end
+
+  def confirm
+    @order = current_user.orders.where(id: params[:id], transaction_id: nil).first
+
+    begin
+      @result = Braintree::TransparentRedirect.confirm(request.query_string)
+    rescue Braintree::BraintreeError
+      return redirect_to purchase_order_url(@order)
+    end
+
+    if @result.success?
+      @order.complete(@result.transaction.id)
+      redirect_to order_url(@order)
+    else
+      render action: :purchase
+    end
+  end
+
+  private
+
+  def create_params
+    params.require(:order).permit(:name, :email, :address1, :address2, :city, :state, :postal_code)
   end
 end

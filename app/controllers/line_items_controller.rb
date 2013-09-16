@@ -14,6 +14,6 @@ class LineItemsController < ApplicationController
   private
 
   def create_params
-    params.require(:line_item).permit(:product_id, :photo_id)
+    params.require(:line_item).permit(:product_id, :photo_id, :contrast, :brightness)
   end
 end

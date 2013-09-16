@@ -9,12 +9,17 @@ AtypicalType::Application.routes.draw do
     resources :line_items, only: [:create, :update, :destroy]
   end
 
-  resources :orders, only: [:new, :index, :show] do
-    get 'confirm', on: :new
+  resources :orders, only: [:new, :create, :index, :show] do
+    get 'purchase', on: :member
+    get 'confirm', on: :member
   end
 
   get 'privacy', to: 'pages#privacy'
   get 'terms', to: 'pages#terms'
   root to: 'pages#welcome'
+
+  if Rails.env.development?
+    mount MessagePreview => 'message_preview'
+  end
 end
 

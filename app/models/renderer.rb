@@ -113,7 +113,7 @@ class Renderer
            when :pdf
              "-sDEVICE=pdfwrite -dSubsetFonts=true "
            when :png
-             "-sDEVICE=pnggray -dTextAlphaBits=2 -dDownScaleFactor=2 -r144 "
+             "-sDEVICE=pnggray "#-dTextAlphaBits=2 -dDownScaleFactor=2 -r144 "
            end
     cmd << "-sOutputFile=- -"
   end

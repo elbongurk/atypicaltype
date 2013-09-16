@@ -1,0 +1,15 @@
+<%= form_for :transaction, builder: BraintreeFormBuilder, url: Braintree::TransparentRedirect.url, params: @result && @result.params[:transaction], errors: @result && @result.errors.for(:transaction) do |form| %>
+  <%= form.fields_for :credit_card do |card| %>
+    <%= card.fieldset_for :number do |number| %>
+      <%= number.label %>
+      <%= number.text_field %>
+    <% end %>
+    <%= card.fieldset_for :expiration_date do |expiration_date| %>
+      <%= expiration_date.label %>
+      <%= expiration_date.select :expiration_month, cc_months %>
+      <%= expiration_date.select :expiration_year, cc_years %>
+    <% end %>
+  <% end %>
+  <%= form.tr_data confirm_order_url(@order), amount: @order.total %>
+  <%= form.submit "Create Order" %>
+<% end %>
