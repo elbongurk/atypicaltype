@@ -3,7 +3,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::DateHelper
 
-  def erorrs
+  def errors
     if has_errors(:base)
       @template.content_tag(:p, determine_error(:base), class: "form-error form-base-error")
     end
