@@ -41,7 +41,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
   
   def select(method, choices, options = {}, html_options = {})
-   super(method, choices, options, with_options(method, options))
+    super(method, choices, options, with_options(method, options))
   end
 
   protected
