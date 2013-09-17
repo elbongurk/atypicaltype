@@ -1,5 +1,6 @@
 <%= form_for :transaction, builder: BraintreeFormBuilder, url: Braintree::TransparentRedirect.url, params: @result && @result.params[:transaction], errors: @result && @result.errors.for(:transaction) do |form| %>
   <%= form.fields_for :credit_card do |card| %>
+    <%= form.errors %>
     <%= card.fieldset_for :number do |number| %>
       <%= number.label %>
       <%= number.text_field %>

@@ -6,8 +6,10 @@ gem 'pg'
 gem 'unicorn'
 
 gem 'rails', github: 'rails/rails', branch: '4-0-stable'
-gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
+gem 'email_validator'
 gem 'delayed_job_active_record'
+
+gem 'mail_view'
 
 gem 'bourbon'
 gem 'neat'

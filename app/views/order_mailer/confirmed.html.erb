@@ -12,10 +12,10 @@
             <td><a href="http://atypicaltype.com"><img width="300" height="51" src="http://www.art410.org/web01/images/logo.png" style="display: inline-block; margin-bottom: 10px" alt="atypical type logo"/></a></td>
           </tr>
 		      <tr>
-            <td><h2 style="font-size: 1.75em">Congrats, your order has been confirmed!</h2></td>
+            <td><h2 style="font-size: 1.75em">Congrats @<%= @order.user.username %>, your order has been confirmed!</h2></td>
           </tr>		
 		      <tr>
-            <td><h2 style="font-weight: 400; margin-bottom: 25px">Order Number: <%= @order.id %></h2></td>
+            <td><h2 style="font-weight: 400; margin-bottom: 25px">Order Number: <%= @order.number %></h2></td>
           </tr>
 		      <tr>
 		        <td>
@@ -39,7 +39,7 @@
                   <% @order.line_items.each do |line_item | %>
                   <tr>
                     <td><img width="100" height="100" src="http://www.art410.org/web01/images/legodate_preview.png" alt="preview image"/></td>
-                    <td style="font-weight: 500; font-size: .85em; padding: 10px 30px"><%= line_item.product.good %></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 30px"><%= line_item.product.description %></td>
                     <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= line_item.product.size %></td>
                     <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= line_item.quantity %></td>
                     <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= number_to_currency(line_item.product.price) %></td>
@@ -56,30 +56,30 @@
                   <tr>
                     <td style="font-size: .85em; font-weight: 600">Recipient Name:</td>
                     <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Subtotal:</td>
-                    <td style="font-weight: 400; font-size: .85em; text-align: right">$69.00</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right"><%= number_to_currency(@order.subtotal) %></td>
                   </tr>
 		              <tr>
-                    <td style="font-size: .85em; font-weight: 300">Ryan Krug</td>
+                    <td style="font-size: .85em; font-weight: 300"><%= @order.name %></td>
                     <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Shipping:</td>
-                    <td style="font-weight: 400; font-size: .85em; text-align: right">$0.00</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right"><%= number_to_currency(@order.shipping) %></td>
                   </tr>	
 		              <tr>
                     <td></td>
                     <td style="font-size: .85em; font-weight: 600;padding-left: 200px">Tax:</td>
-                    <td style="font-weight: 400; font-size: .85em; text-align: right">$0.00</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right"><%= number_to_currency(@order.tax) %></td>
                   </tr>	
 		              <tr>
                     <td style="font-size: .85em; font-weight: 600">Shipping Address:</td>
                     <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Total:</td>
-                    <td rowspan="2" style="font-weight: 400; font-size: 2em; text-align: right">$69.00</td>
+                    <td rowspan="2" style="font-weight: 400; font-size: 2em; text-align: right"><%= number_to_currency(@order.total) %></td>
                   </tr>
 		              <tr>
-                    <td style="font-size: .85em; font-weight: 300">2825 College Ave</td>
+                    <td style="font-size: .85em; font-weight: 300"><%= @order.address1 %></td>
                     <td></td>
                     <td></td>
                   </tr>	
 		              <tr>
-                    <td style="font-size: .85em; font-weight: 300">Stevens Point, WI  54481</td>
+                    <td style="font-size: .85em; font-weight: 300"><%= @order.city %>, <%= @order.state %>  <%= @order.postal_code %></td>
                     <td></td>
                     <td></td>
                   </tr>	

@@ -4,8 +4,15 @@ class Order < ActiveRecord::Base
   has_one :user, through: :cart
   has_many :line_items, through: :cart
 
+  validates :name, presence: true
+  validates :email, presence: true, email: true
+  validates :address1, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :postal_code, presence: true
+
   def number
-    self.id ? self.id + 60 : nil
+    self.id + 60 if self.id
   end
 
   def country
@@ -16,16 +23,16 @@ class Order < ActiveRecord::Base
     super || sprintf('%.2f', subtotal + shipping + tax)
   end
 
-  def subtotal    
-    cart ? cart.total : 0.00
-  end
-
   def shipping
     super || 0.00
   end
 
   def tax
     super || (tax_rate * (subtotal + shipping))
+  end
+
+  def subtotal    
+    cart ? cart.total : 0.00
   end
 
   def tax_rate

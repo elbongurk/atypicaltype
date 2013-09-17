@@ -1,11 +1,11 @@
 class MessagePreview < MailView
   def order_confirmed
-    order = Order.find(1)
+    order = Order.where.not(transaction_id: nil).first
     OrderMailer.confirmed(order)
   end
 
   def order_shipped
-    order = Order.find(1)
+    order = Order.where.not(transaction_id: nil).first
     OrderMailer.shipped(order)
   end
 end

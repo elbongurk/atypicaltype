@@ -15,7 +15,11 @@ module AtypicalType
     config.autoload_paths += %W(#{config.root}/app/jobs)
 
     config.active_record.default_timezone = :utc
-    
+
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      html_tag
+    end
+
     config.generators do |generate|
       generate.helper false
       generate.javascript_engine false

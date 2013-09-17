@@ -1,6 +1,6 @@
-Congrats, your order has been confirmed!
+Congrats <%= @order.user.username %>, your order has been confirmed!
 
-Order Number: 001
+Order Number: <%= @order.number %>
 
 Hi!
 
@@ -15,9 +15,11 @@ order's sent out, we won't be able to change anything!
 
 Product              Size        Qty  Price
 -------------------  ----------  ---  ------
-Gallery Wrap Canvas  12 x 12 in  1    $69.00
+<% @order.line_items.includes(:product).each do |line_item| %>
 
-Recipient Name:	Ryan Krug	
+<% end %>
+
+Recipient Name:	<%= @order.name %>
 
 Subtotal: $69.00
 Shipping:  $0.00
