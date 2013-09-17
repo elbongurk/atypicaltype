@@ -1,45 +1,49 @@
-Congrats <%= @order.user.username %>, your order has been confirmed!
+Congrats @<%= @order.user.username %>, your order has been confirmed!
 
-Order Number: <%= @order.number %>
+Order Number: #<%= @order.number %>
 
 Hi!
 
 Giving you a heads up that we successfully received your order!
 
 It will be fulfilled and sent out in about 2-7 days, we'll send you
-another email when it's been sent out, along with the tracking number
-(tracking available for the US orders only).
+another email when it's been sent out, along with the tracking number.
 
 Check the information below and make sure it's all correct, once your
 order's sent out, we won't be able to change anything!
 
-Product              Size        Qty  Price
--------------------  ----------  ---  ------
+Product              Size        Qty    Price
+-------------------  ----------  ---   ------
 <% @order.line_items.includes(:product).each do |line_item| %>
-
+<%= line_item.product.description.ljust(18) %>  <%= line_item.product.size.ljust(10) %>  <%= line_item.quantity.to_s.center(3) %>  <%= number_to_currency(line_item.product.price).rjust(7) %> 
 <% end %>
 
-Recipient Name:	<%= @order.name %>
-
-Subtotal: $69.00
-Shipping:  $0.00
-Tax:       $0.00
-Total:    $69.00
+Subtotal: <%= number_to_currency(@order.subtotal).rjust(7) %>
+Shipping: <%= number_to_currency(@order.shipping).rjust(7) %>
+Tax:      <%= number_to_currency(@order.tax).rjust(7) %>
+Total:    <%= number_to_currency(@order.total).rjust(7) %>
 
 Shipping Address:	
-2825 College Ave
-Stevens Point, WI 54481
+<%= @order.name %>
+<%= @order.address1 %>
+<% if @order.address2.present? %>
+<%= @order.address2 %>  
+<% end %>
+<%= @order.city %>, <%= @order.state %> <%= @order.postal_code %>
 United States
 
 If anything's wrong, simply hit reply ASAP and let us know what should
 be changed.
 
-You won't receive a paper invoice/receipt, print the invoice from
-"Billing" section if you need a physical copy.
+You won't receive a paper invoice/receipt, print this email if you 
+need a physical copy.
 
 Hope you have a great day,
 The Atypical Type Team
 
-You can call us at +1 (715) 555-5555 from 9am to 5pm (CST).
+You can call us at +1 (715) 252-9718 from 9am to 5pm (CST).
 
-Elbongurk, LLC. 23 Park Ridge Drive Mailbox #6, Stevens Point, WI 54481, USA
+Elbongurk, LLC. 
+23 Park Ridge Drive Mailbox #6
+Stevens Point, WI 54481
+United States

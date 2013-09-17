@@ -15,13 +15,13 @@
             <td><h2 style="font-size: 1.75em">Congrats @<%= @order.user.username %>, your order has been confirmed!</h2></td>
           </tr>		
 		      <tr>
-            <td><h2 style="font-weight: 400; margin-bottom: 25px">Order Number: <%= @order.number %></h2></td>
+            <td><h2 style="font-weight: 400; margin-bottom: 25px">Order Number: #<%= @order.number %></h2></td>
           </tr>
 		      <tr>
 		        <td>
               <p style="text-align: left; font-weight: 300; line-height: 150%">Hi!</p>
 			        <p style="text-align: left; font-weight: 300; line-height: 150%">Giving you a heads up that we successfully received your order!</p>
-			        <p style="text-align: left; font-weight: 300; line-height: 150%">It will be fulfilled and sent out in about 2-7 days, we'll send you another email when it's been sent out, along with the tracking number (tracking available for the US orders only).</p>
+			        <p style="text-align: left; font-weight: 300; line-height: 150%">It will be fulfilled and sent out in about 2-7 days, we'll send you another email when it's been sent out, along with the tracking number.</p>
 			        <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 75px">Check the information below and make sure it's all correct, once your order's sent out, we won't be able to change anything!</p>
 		        </td>
           </tr>	
@@ -36,7 +36,7 @@
                     <th style="font-size: .85em; font-weight: 600">Qty</th>
                     <th style="font-size: .85em; font-weight: 600">Price</th>
 			            </tr>
-                  <% @order.line_items.each do |line_item | %>
+                  <% @order.line_items.includes(:product).each do |line_item | %>
                   <tr>
                     <td><img width="100" height="100" src="http://www.art410.org/web01/images/legodate_preview.png" alt="preview image"/></td>
                     <td style="font-weight: 500; font-size: .85em; padding: 10px 30px"><%= line_item.product.description %></td>
@@ -78,6 +78,13 @@
                     <td></td>
                     <td></td>
                   </tr>	
+                  <% if @order.address2.present? %>
+		                <tr>
+                      <td style="font-size: .85em; font-weight: 300"><%= @order.address2 %></td>
+                      <td></td>
+                      <td></td>
+                    </tr>	
+                  <% end %>
 		              <tr>
                     <td style="font-size: .85em; font-weight: 300"><%= @order.city %>, <%= @order.state %>  <%= @order.postal_code %></td>
                     <td></td>
@@ -95,10 +102,10 @@
 		      <tr>
             <td>
 		          <p style="text-align: left; font-weight: 300; line-height: 150%">If anything's wrong, simply hit reply ASAP and let us know what should be changed.</p>
-		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 50px">You won't receive a paper invoice/receipt, print the invoice from "Billing" section if you need a physical copy.</p>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 50px">You won't receive a paper invoice/receipt, print this email if you need a physical copy.</p>
 		          <p style="text-align: left; font-weight: 300; margin-bottom: 5px; margin-bottom: -10px">Hope you have a great day,</p>
 		          <p style="text-align: left; font-weight: 300">The Atypical Type Team</p>
-		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 50px">You can call us at +1 (715) 555-5555 from 9am to 5pm (Central Standard time).</p>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 50px">You can call us at +1 (715) 252-9718 from 9am to 5pm (Central Standard time).</p>
 		        </td>
           </tr>
 		      <tr>
