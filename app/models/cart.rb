@@ -4,6 +4,6 @@ class Cart < ActiveRecord::Base
   has_many :orders
 
   def total
-    Product.includes(:line_items).where(line_items: { cart_id: self.id }).sum("products.price * line_items.quantity")
+    Product.joins(:line_items).where(line_items: { cart_id: self.id }).sum("products.price * line_items.quantity")
   end
 end
