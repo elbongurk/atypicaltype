@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 1d03b5f5165868339cdf6b21d63853dd48513033
+  revision: c8eb8235bb777fda0a4e0ff0bc8ed45922339bca
   branch: 4-0-stable
   specs:
     actionmailer (4.0.0)
@@ -121,7 +121,7 @@ GEM
     neat (1.4.0)
       bourbon (>= 2.1)
       sass (>= 3.2)
-    pg (0.16.0)
+    pg (0.17.0)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
     rack (1.5.2)
