@@ -4,9 +4,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::DateHelper
 
   def errors
-    if has_errors(:base)
-      @template.content_tag(:p, determine_error(:base), class: "form-error form-base-error")
-    end
+    with_error_text(:base, "")
   end
   
   def initialize(object_name, object, template, options = {}, &proc)
