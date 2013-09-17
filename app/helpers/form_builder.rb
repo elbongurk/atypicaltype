@@ -5,7 +5,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
 
   def erorrs
     if has_errors(:base)
-      @template.content_tag(:p, determine_error(:base))
+      @template.content_tag(:p, determine_error(:base), class: "form-error form-base-error")
     end
   end
   
