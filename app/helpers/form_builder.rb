@@ -53,7 +53,11 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def determine_error(method)
-    "#{method.to_s.humanize} #{@object.errors[method].first}"
+    if method == :base
+      @object.errors[:base].first
+    else
+      "#{method.to_s.humanize} #{@object.errors[method].first}"
+    end
   end
 
   private
