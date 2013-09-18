@@ -7,6 +7,7 @@ gem 'unicorn'
 
 gem 'rails', github: 'rails/rails', branch: '4-0-stable'
 gem 'email_validator'
+gem 'recipient_interceptor'
 gem 'delayed_job_active_record'
 
 gem 'mail_view'
