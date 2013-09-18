@@ -79,4 +79,5 @@ AtypicalType::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: 'atypicaltype-staging.herokuapp.com' }
+  config.action_mailer.asset_host = "http://atypicaltype-staging.herokuapp.com"
 end

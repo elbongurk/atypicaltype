@@ -1,37 +1,46 @@
-Your order has shipped!
+Hey @<%= @order.user.username %>, your order has shipped!
 
-Order Number: 001
+Order Number: #<%= @order.number %>
 
 Hi!
 
-Just letting you know that your order #1 has been sent out!
+Just letting you know that your order #<%= @order.number %> has been sent out!
 
-Here is your tracking number: 11111001010110
+Here is your tracking number: 
+
+<% @order.fulfillments.recent.each do |fulfillment| %>
+<%= fulfillment.tracking_code %>
+<% end %>
 
 Note: Tracking information can take up to 48 hours to be updated after
 the order is shipped.
 
-The estimated arrival date: Sep 1st, 2013 - Sep 12th, 2013
+Product              Size        Qty    Price
+-------------------  ----------  ---   ------
+<% @order.line_items.includes(:product).each do |line_item| %>
+<%= line_item.product.description.ljust(18) %>  <%= line_item.product.size.ljust(10) %>  <%= line_item.quantity.to_s.center(3) %>  <%= number_to_currency(line_item.product.price).rjust(7) %> 
+<% end %>
 
-Product              Size        Qty  Price
--------------------  ----------  ---  ------
-Gallery Wrap Canvas  12 x 12 in  1    $69.00
-
-Recipient Name:	Ryan Krug
-
-Subtotal: $69.00
-Shipping:  $0.00
-Tax:       $0.00
-Total:    $69.00
+Subtotal: <%= number_to_currency(@order.subtotal).rjust(7) %>
+Shipping: <%= number_to_currency(@order.shipping).rjust(7) %>
+Tax:      <%= number_to_currency(@order.tax).rjust(7) %>
+Total:    <%= number_to_currency(@order.total).rjust(7) %>
 
 Shipping Address:	
-2825 College Ave
-Stevens Point, WI 54481
+<%= @order.name %>
+<%= @order.address1 %>
+<% if @order.address2.present? %>
+<%= @order.address2 %>  
+<% end %>
+<%= @order.city %>, <%= @order.state %> <%= @order.postal_code %>
 United States
 
 Looking forward to your next order,
 The Atypical Type Team
 
-You can call us at +1 (715) 555-5555 from 9am to 5pm (CST).
+You can call us at +1 (715) 252-9718 from 9am to 5pm (CST).
 
-Elbongurk, LLC. 23 Park Ridge Drive Mailbox #6, Stevens Point, WI 54481, USA
+Elbongürk, LLC.
+23 Park Ridge Drive Mailbox #6
+Stevens Point, WI 54481
+United States

@@ -79,4 +79,5 @@ AtypicalType::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: 'atypicaltype.com' }
+  config.action_mailer.asset_host = "http://atypicaltype.com"
 end

@@ -6,6 +6,9 @@ class MessagePreview < MailView
 
   def order_shipped
     order = Order.where.not(transaction_id: nil).first
+    unless order.fulfillments.present?
+      order.fulfillments << Fulfillment.new(tracking_code: "13324324234234234", shipped_on: Date.today)
+    end
     OrderMailer.shipped(order)
   end
 end

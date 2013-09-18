@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = current_user.orders.where(id: params[:id]).where.not(transaction_id: nil).first
+    @order = current_user.orders.closed.find(params[:id])
   end
 
   def new
@@ -24,11 +24,11 @@ class OrdersController < ApplicationController
   end
 
   def purchase
-    @order = current_user.orders.where(id: params[:id], transaction_id: nil).first    
+    @order = current_user.orders.open.find(params[:id])
   end
 
   def confirm
-    @order = current_user.orders.where(id: params[:id], transaction_id: nil).first
+    @order = current_user.orders.open.find(params[:id])
 
     begin
       @result = Braintree::TransparentRedirect.confirm(request.query_string)
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     end
 
     if @result.success?
-      @order.complete(@result.transaction.id)
+      @order.close(@result.transaction.id)
       redirect_to order_url(@order)
     else
       render action: :purchase
@@ -47,6 +47,8 @@ class OrdersController < ApplicationController
   private
 
   def create_params
-    params.require(:order).permit(:name, :email, :address1, :address2, :city, :state, :postal_code)
+    params
+      .require(:order)
+      .permit(:name, :email, :address1, :address2, :city, :state, :postal_code)
   end
 end

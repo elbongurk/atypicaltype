@@ -9,30 +9,28 @@
       <table style="width: 600px">		
 		    <tbody>
           <tr>
-            <td><a href="http://atypicaltype.com"><img width="300" height="51" src="http://www.art410.org/web01/images/logo.png" style="display: inline-block; margin-bottom: 10px" alt="atypical type logo"/></a></td>
+            <td><a href="http://atypicaltype.com"><%= image_tag "logo.png", width: 300, height: 51, style: "display: inline-block; margin-bottom: 10px", alt: "atypical type logo" %></a></td>
           </tr>		
 		      <tr>
-            <td><h2 style="font-size: 1.75em">Your order has shipped!</h2></td>
-          </tr>
-		      <tr>
-            <td><h2 style="font-weight: 400; margin-bottom: 25px">Order Number: 001</h2></td>
+            <td><h2 style="font-size: 1.75em">Hey @<%= @order.user.username %>, your order has shipped!</h2></td>
           </tr>
 		      <tr>
 		        <td>
               <p style="text-align: left; font-weight: 300; line-height: 150%">Hi!</p>
-			        <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 25px">Just letting you know that your order #1 has been sent out!</p>
+			        <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 25px">Just letting you know that your order #<%= @order.number %> has been sent out!</p>
             </td>
           </tr>
 		      <tr>
             <td>
               <h4 style="margin-bottom: 5px; padding-bottom: 0">Here is your tracking number:</h4>
-              <p style="margin-top: 0; padding: 10px 15px; background-color: #f1f1f1; font-size: 2em; font-weight: 300; margin-bottom: 25px">11111001010110</p>
+              <% @order.fulfillments.recent.each do |fulfillment| %>
+                <p style="margin-top: 0; padding: 10px 15px; background-color: #f1f1f1; font-size: 2em; font-weight: 300; margin-bottom: 25px"><a style="color: black; text-decoration: none"  href="https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=<%= fulfillment.tracking_code %>"><%= fulfillment.tracking_code %></a></p>
+              <% end %>
             </td>
           </tr>
           <tr>
             <td>
 		          <p style="text-align: left; font-weight: 300; line-height: 150%"><em>Note: Tracking information can take up to 48 hours to be updated after the order is shipped.</em></p>
-		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 50px">The estimated arrival date: <span style="font-weight: 600">Sep 1st, 2013 - Sep 12th, 2013</span></p>
 		        </td>
           </tr>
           <tr>
@@ -43,13 +41,15 @@
                     <th style="font-size: .85em; font-weight: 600">Preview</th><th style="font-size: .85em; font-weight: 600">Product</th><th style="font-size: .85em; font-weight: 600">Size</th>
                     <th style="font-size: .85em; font-weight: 600">Qty</th><th style="font-size: .85em; font-weight: 600">Price</th>
 			            </tr>
+                  <% @order.line_items.includes(:product).each do |line_item | %>
                   <tr>
                     <td><img width="100" height="100" src="http://www.art410.org/web01/images/legodate_preview.png" alt="preview image"/></td>
-                    <td style="font-weight: 500; font-size: .85em; padding: 10px 30px">Gallery Wrap Canvas</td>
-                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px">12 x 12 in</td>
-                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px">1</td>
-                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px">$69.00</td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 30px"><%= line_item.product.description %></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= line_item.product.size %></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= line_item.quantity %></td>
+                    <td style="font-weight: 500; font-size: .85em; padding: 10px 20px"><%= number_to_currency(line_item.product.price) %></td>
                   </tr>
+                  <% end %>
 		            </tbody>
               </table>
 		        </td>
@@ -61,30 +61,37 @@
                   <tr>
                     <td style="font-size: .85em; font-weight: 600">Recipient Name:</td>
                     <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Subtotal:</td>
-                    <td style="font-weight: 400; font-size: .85em; text-align: right">$69.00</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right"><%= number_to_currency(@order.subtotal) %></td>
                   </tr>
 		              <tr>
                     <td style="font-size: .85em; font-weight: 300">Ryan Krug</td>
                     <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Shipping:</td>
-                    <td style="font-weight: 400; font-size: .85em; text-align: right">Free</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right"><%= number_to_currency(@order.shipping) %></td>
                   </tr>	
 		              <tr>
                     <td></td>
                     <td style="font-size: .85em; font-weight: 600;padding-left: 200px">Tax:</td>
-                    <td style="font-weight: 400; font-size: .85em; text-align: right">$0.00</td>
+                    <td style="font-weight: 400; font-size: .85em; text-align: right"><%= number_to_currency(@order.tax) %></td>
                   </tr>	
 		              <tr>
                     <td style="font-size: .85em; font-weight: 600">Shipping Address:</td>
                     <td style="font-size: .85em; font-weight: 600; padding-left: 200px">Total:</td>
-                    <td rowspan="2" style="font-weight: 400; font-size: 2em; text-align: right">$69.00</td>
+                    <td rowspan="2" style="font-weight: 400; font-size: 2em; text-align: right"><%= number_to_currency(@order.total) %></td>
                   </tr>
 		              <tr>
-                    <td style="font-size: .85em; font-weight: 300">2825 College Ave</td>
+                    <td style="font-size: .85em; font-weight: 300"><%= @order.address1 %></td>
                     <td></td>
                     <td></td>
                   </tr>	
+                  <% if @order.address2.present? %>
+		                <tr>
+                      <td style="font-size: .85em; font-weight: 300"><%= @order.address2 %></td>
+                      <td></td>
+                      <td></td>
+                    </tr>	
+                  <% end %>
 		              <tr>
-                    <td style="font-size: .85em; font-weight: 300">Stevens Point, WI  54481</td>
+                    <td style="font-size: .85em; font-weight: 300"><%= @order.city %>, <%= @order.state %>  <%= @order.postal_code %></td>
                     <td></td>
                     <td></td>
                   </tr>	
@@ -101,7 +108,7 @@
             <td>
 		          <p style="text-align: left; font-weight: 300; margin-bottom: 5px; margin-bottom: -10px">Looking forward to your next order,</p>
 		          <p style="text-align: left; font-weight: 300">The Atypical Type Team</p>
-		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 25px; font-size: .75em"><em>You can call us at +1 (715) 555-5555 from 9am to 5pm (Central Standard time).</em></p>
+		          <p style="text-align: left; font-weight: 300; line-height: 150%; margin-bottom: 25px; font-size: .75em"><em>You can call us at +1 (715) 252-9718 from 9am to 5pm (Central Standard time).</em></p>
 		        </td>
           </tr>
 		      <tr>
@@ -110,7 +117,7 @@
 		      <tr>
             <td>
 		          <p style="text-align: left; font-weight: 300; margin-bottom: 5px">Manage your notification settings <a href="http://atypicaltype.com">here</a>.</p>
-		          <p style="text-align: left; font-weight: 300">Elbongurk, LLC. 23 Park Ridge Drive Mailbox #6, Stevens Point, WI 54481, USA</p>
+		          <p style="text-align: left; font-weight: 300">Elbongürk, LLC. 23 Park Ridge Drive Mailbox #6, Stevens Point, WI 54481, USA</p>
 		        </td>
           </tr>
         </tbody>

@@ -11,6 +11,14 @@ class Order < ActiveRecord::Base
   validates :state, presence: true
   validates :postal_code, presence: true
 
+  def self.open
+    where(transaction_id: nil)
+  end
+
+  def self.closed
+    where.not(transaction_id: nil)
+  end
+
   def number
     self.id + 60 if self.id
   end
@@ -44,7 +52,7 @@ class Order < ActiveRecord::Base
     end    
   end
 
-  def complete(transaction_id)
+  def close(transaction_id)
     update!(transaction_id: transaction_id, total: total, shipping: shipping, tax: tax)
     Delayed::Job.enqueue OrderFulfillmentJob.new(self.id)
   end

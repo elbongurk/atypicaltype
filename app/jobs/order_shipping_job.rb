@@ -9,7 +9,7 @@ class OrderShippingJob < Struct.new(:order_id)
       porder.fulfilments.take(diff).each do |f|
         order.fullfillments.create!(service: f.service, tracking_code: f.trackingCode, shipped_on: f.shippingDate)
       end
-      OrderMailer.shipped(porder).deliver
+      FulfillmentMailer.shipped(order).deliver
     else
       Delayed::Job.enqueue self, run_at: Time.now + 1.hours
     end
