@@ -8,9 +8,7 @@ Just letting you know that your order #<%= @order.number %> has been sent out!
 
 Here is your tracking number: 
 
-<% @order.fulfillments.recent.each do |fulfillment| %>
-<%= fulfillment.tracking_code %>
-<% end %>
+<%= @order.fulfillments.last.try(:tracking_code) %>
 
 Note: Tracking information can take up to 48 hours to be updated after
 the order is shipped.

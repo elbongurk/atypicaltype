@@ -1,7 +1,7 @@
-<div class="scene scene-1" data-photo-url="<%= photo_url(@photo.id, format: :png) %>">
+<div class="scene scene-1" data-photo-url="<%= canvas_photo_url(@photo.id, format: :png) %>">
   <div class="panels">
     <% %w(front top bottom left right).each do |side| %>
-      <div style="background-image: url(<%= photo_url(@photo.id, format: :png) %>);" class="panel panel-<%= side %>"></div>
+      <div style="background-image: url(<%= canvas_photo_url(@photo.id, format: :png) %>);" class="panel panel-<%= side %>"></div>
     <% end %>
   </div>
   <div class="floor"></div>
@@ -16,7 +16,7 @@
 <%= form_for :line_item, url: cart_line_items_path do |form| %>
   <fieldset>
     <%= form.label :product_id %>
-    <%= form.select :product_id, Product.active.map { |p| ["#{p.good} - #{p.size}", p.id ] } %>
+    <%= form.select :product_id, Product.canvases.map { |p| ["#{p.good} - #{p.size}", p.id ] } %>
   </fieldset>
   <fieldset>
     <%= form.label :contrast %>

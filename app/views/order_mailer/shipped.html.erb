@@ -23,9 +23,7 @@
 		      <tr>
             <td>
               <h4 style="margin-bottom: 5px; padding-bottom: 0">Here is your tracking number:</h4>
-              <% @order.fulfillments.recent.each do |fulfillment| %>
-                <p style="margin-top: 0; padding: 10px 15px; background-color: #f1f1f1; font-size: 2em; font-weight: 300; margin-bottom: 25px"><a style="color: black; text-decoration: none"  href="https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=<%= fulfillment.tracking_code %>"><%= fulfillment.tracking_code %></a></p>
-              <% end %>
+              <p style="margin-top: 0; padding: 10px 15px; background-color: #f1f1f1; font-size: 2em; font-weight: 300; margin-bottom: 25px"><a style="color: black; text-decoration: none"  href="https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=<%= @order.fulfillments.last.try(:tracking_code) %>"><%= @order.fulfillments.last.try(:tracking_code) %></a></p>
             </td>
           </tr>
           <tr>

@@ -3,15 +3,21 @@ AtypicalType::Application.routes.draw do
   get 'sign_in', to: 'o_auth#connect'
   get 'sign_out', to: 'o_auth#disconnect'
 
-  resources :photos, only: [:index, :show]
+  resources :photos, only: [:index, :show] do 
+    member do
+      get 'canvas'
+    end
+  end
 
   resource :cart, only: [:show] do
     resources :line_items, only: [:create, :update, :destroy]
   end
 
   resources :orders, only: [:new, :create, :index, :show] do
-    get 'purchase', on: :member
-    get 'confirm', on: :member
+    member do
+      get 'purchase'
+      get 'confirm'
+    end
   end
 
   get 'privacy', to: 'pages#privacy'
