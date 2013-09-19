@@ -8,48 +8,52 @@
     <%= csrf_meta_tags %>
   </head>
   <body data-controller="<%= controller_name =%>" data-action="<%= action_name %>">
-	  <section class="marketing"><i class="icon-truck"></i> free domestic shipping!</section>
-    <nav id="top-menu">
-      <h1><%= link_to image_tag("logo.png"), root_path %></h1>
-      <ul>
-        <li><%= link_to "Sign In", "#" %></li>
-        <li><%= link_to "Blog", "#" %></li>
-        <li><%= link_to "About", "#" %></li>
-        <li><%= link_to "Contact Us", "#" %></li>
-        <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
-      </ul>
-    </nav>
-    <%= yield %>
-    <footer>
-      <section class="copyright">
-        <h3>Atypical Type has been created with &hearts; by:</h3>
-        <p><%= link_to image_tag("gurkie.png"), "http://elbongurk.com" %></p>
-        <p class="copy-message">Proudly imagined, developed, printed and assembled in the USA.</p>
-        <p>&copy; 2013 Elbongürk, LLC</p>
-      </section>
-      <nav id="bottom-menu">
-        <h3>Atypical Type</h3>
-    	  <ul>
-      	  <li><%= link_to "Sign In", sign_in_path %></li>
-				  <li><a href="#">Blog</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><%= link_to "Terms & Conditions", terms_path %></li>
-          <li><%= link_to "Privacy Policy", privacy_path %></li>
+    <header>
+	    <section class="marketing"><i class="icon-truck"></i> free domestic shipping!</section>
+      <nav id="top-menu">
+        <h1><%= link_to image_tag("logo.png"), root_path %></h1>
+        <ul>
+          <li><%= link_to "Sign In", "#" %></li>
+          <li><%= link_to "Blog", "#" %></li>
+          <li><%= link_to "About", "#" %></li>
+          <li><%= link_to "Contact Us", "#" %></li>
+          <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
         </ul>
       </nav>
-      <section class="social">
-		    <h3>Keep in touch for news and offers</h3>
-        <ul>
-          <li><a href="http://twitter.com"><i class="icon-twitter-sign"></i></a></li>
-          <li><a href="http://instagram.com"><i class="icon-instagram"></i></a></li>
-          <li><a href="http://pinterest.com"><i class="icon-pinterest-sign"></i></a></li>
-          <li><a href="http://facebook.com"<i class="icon-facebook-sign"></i></a></li>
-        </ul>
-      </section>
-      <section class="notices">
+    </header>
+    <%= yield %>
+    <footer>
+      <article class="footer-widgets">
+        <section class="copyright widget">
+          <h3>Atypical Type has been created with &hearts; by:</h3>
+          <p><%= link_to image_tag("gurkie.png"), "http://elbongurk.com" %></p>
+          <p class="copy-message">Proudly imagined, developed, printed and assembled in the USA.</p>
+          <p>&copy; 2013 Elbongürk, LLC</p>
+        </section>
+        <nav id="bottom-menu" class="menu widget">        
+          <h3>Atypical Type</h3>
+    	    <ul>
+      	    <li><%= link_to "Sign In", sign_in_path %></li>
+				    <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><%= link_to "Terms & Conditions", terms_path %></li>
+            <li><%= link_to "Privacy Policy", privacy_path %></li>
+          </ul>
+        </nav>
+        <section class="social widget">
+		      <h3>Keep in touch for news and offers</h3>
+          <ul>
+            <li><a href="http://twitter.com"><i class="icon-twitter-sign"></i></a></li>
+            <li><a href="http://instagram.com"><i class="icon-instagram"></i></a></li>
+            <li><a href="http://pinterest.com"><i class="icon-pinterest-sign"></i></a></li>
+            <li><a href="http://facebook.com"><i class="icon-facebook-sign"></i></a></li>
+          </ul>
+        </section>
+      </article>
+      <article class="notices">
         <p>This product uses the Instagram API but is not endorsed or certified by Instagram.</p>
-      </section>
+      </article>
     </footer>
   </body>
 </html>

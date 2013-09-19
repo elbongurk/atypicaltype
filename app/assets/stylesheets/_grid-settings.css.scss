@@ -1,0 +1,8 @@
+@import "neat-helpers";
+
+$grid-columns: 4;
+$max-width: em(1024);
+$visual-grid: true;
+
+$tablet: new-breakpoint(em(704), 6);
+

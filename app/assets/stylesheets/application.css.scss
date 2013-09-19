@@ -1,6 +1,5 @@
 @import "bourbon";
-$grid-columns: 6;
-$visual-grid: true;
+@import "grid-settings";
 @import "neat";
 
 @import "font-awesome";
