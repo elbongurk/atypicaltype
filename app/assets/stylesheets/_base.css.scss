@@ -92,9 +92,12 @@ footer[role=contentinfo] {
   }
   .copyright {
     background-color: #666;
-    .copy-message {
-      margin: 20px 0;
+    p {
+      margin: 15px 0;
       font-size: 0.8em;
+    }
+    .love {
+      color: #EE257B;
     }
   }
   .menu {
@@ -107,20 +110,14 @@ footer[role=contentinfo] {
       display: block;
       background: #333;
       line-height: 3;
+      @include media($tablet) {
+        background: inherit;
+        line-height: 1.5;
+        font-size: 1em;
+      }
     }
-  }
-  .social {
-    ul {
-      margin: 10px;
-    }
-    li {
-      display: inline-block;
-    }
-    a {
-      display: inline-block;
-      text-decoration: none;
-      color: #fff;
-      font-size: 3em;
+    @include media($tablet) {
+      text-align: left;
     }
   }
   .notices {
