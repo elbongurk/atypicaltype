@@ -5,4 +5,5 @@ $max-width: em(1024);
 $visual-grid: true;
 
 $tablet: new-breakpoint(em(704), 6);
+$desktop: new-breakpoint(em(960), 6);
 

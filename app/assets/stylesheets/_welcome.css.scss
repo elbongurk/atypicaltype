@@ -1,0 +1,89 @@
+.explain {
+  margin-bottom: 26px;
+  
+  h3 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    line-height: 1.8;
+    font-family: "Gotham Light";
+    color: #333;
+  }
+
+  p {
+    font-family: "Gotham Light";
+    line-height: 1.5;
+    font-size: 1em;
+    padding: 0 30px;
+    margin-bottom: 18px;
+  }
+
+  figure {
+    text-align: center;
+  }
+}
+
+.explain-hero {
+  h2 {
+    text-align: center;
+    font-family: "Landmark Regular";
+	  font-weight: 400;
+    font-size: 1.25em;
+    line-height: 1.5;
+    color: #333;
+    margin: 0 20px 15px;
+    text-transform: uppercase;
+    em {
+      color: #00aeef;
+    }
+    @include media($tablet) {
+      font-size: 1.5em;
+    }
+    @include media($desktop) {
+      font-size: 2em;
+    }
+  }
+}
+
+.explain-steps {
+  color: #333;
+  ol {
+    @include outer-container;
+    counter-reset: step-counter;
+    list-style: none;
+  }
+  li {
+    @include media($tablet) {
+      @include span-columns(2 of 6);
+    }
+  }
+  li:before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    font-family: "Gotham Book";
+    font-size: 4em;
+    color: #00aaff;
+    float: left;
+    margin: -5px 10px 0;
+  }
+  p {
+    font-size: 0.85em;
+    line-height: 1.5;
+    margin-bottom: 0px;
+    padding-left: 30px;
+  }
+  figure {
+    padding: 10px 30px;
+  }
+}
+
+.explain-words {
+  p {
+    @include media($tablet) {
+      padding: 0;
+      @include shift(1);
+      @include span-columns(4 of 6);
+    }
+  }
+}
+

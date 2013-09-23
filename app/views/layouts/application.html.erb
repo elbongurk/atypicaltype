@@ -8,22 +8,26 @@
     <%= csrf_meta_tags %>
   </head>
   <body data-controller="<%= controller_name =%>" data-action="<%= action_name %>">
-    <header>
-	    <section class="marketing"><i class="icon-truck"></i> free domestic shipping!</section>
-      <nav id="top-menu">
-        <h1><%= link_to image_tag("logo.png"), root_path %></h1>
-        <ul>
-          <li><%= link_to "Sign In", "#" %></li>
-          <li><%= link_to "Blog", "#" %></li>
-          <li><%= link_to "About", "#" %></li>
-          <li><%= link_to "Contact Us", "#" %></li>
-          <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
-        </ul>
-      </nav>
+    <header role="banner">
+      <div class="wrapper">
+        <div class="marketing"><i class="icon-truck"></i> free domestic shipping!</div>
+        <nav id="top-menu">
+          <h1><%= link_to image_tag("logo.png"), root_path %></h1>
+          <ul>
+            <li><%= link_to "Sign In", "#" %></li>
+            <li><%= link_to "Blog", "#" %></li>
+            <li><%= link_to "About", "#" %></li>
+            <li><%= link_to "Contact Us", "#" %></li>
+            <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <%= yield %>
-    <footer>
-      <article class="footer-widgets">
+    <article role="main">
+      <%= yield %>
+    </article>
+    <footer role="contentinfo">
+      <div class="wrapper">
         <section class="copyright widget">
           <h3>Atypical Type has been created with &hearts; by:</h3>
           <p><%= link_to image_tag("gurkie.png"), "http://elbongurk.com" %></p>
@@ -50,10 +54,10 @@
             <li><a href="http://facebook.com"><i class="icon-facebook-sign"></i></a></li>
           </ul>
         </section>
-      </article>
-      <article class="notices">
+      </div>
+      <div class="notices">
         <p>This product uses the Instagram API but is not endorsed or certified by Instagram.</p>
-      </article>
+      </div>
     </footer>
   </body>
 </html>

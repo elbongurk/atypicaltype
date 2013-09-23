@@ -1,45 +1,37 @@
-<article role="main">
-  <header role="banner">
-    <h2>Turn your <em>Instagram photos</em> into <em>clever</em>, unexpected, beautiful, <em>typographic</em> works of <em>art</em></h2>
-    <figure>
-      <%= image_tag "hero2.png" %>
-    </figure>
-    <p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
-  </header>
-  <section class="steps explain">
-    <h3>3 Simple Steps</h3>
-    <ol>
-      <li>
-        <p>Select a photo from instagram. Any photo will work, but we find portraits to be especially amazing.</p>
-        <figure><%= image_tag "hand_iphone.jpg" %></figure>
-      </li>
-      <li>
-        <p>Your photo is coverted into an original grid of type 150 by 150 characters.</p>
-        <figure><%= image_tag "magnify2.png" %></figure>
-      </li>
-      <li>
-        <p>The finished product is printed on high quality gallery wrap canvas and shipped to your door.</p>
-        <figure><%= image_tag "hung2.jpg" %></figure>
-      </li>
-    </ol>
-  </section>
-  <section class="explain">
-    <figure><%= image_tag "topcanvas2.jpg" %></figure>
-    <h3>So What's The Deal?</h3>
-    <p>We take your original instagram photograph and using our own special blend of magic, turn it into a grid of typographic characters.</p>
-    <p>Each 12 x 12 inch canvas has 150 type characters both across and down.  These 22,500 characters are each specifically chosen to match a tiny bit of your original photo.</p>
-    <p> Up close you can easily see the individual characters, but as you move further and further back  the type blends together and your photograph resembles a traditional black and white photograph.</p>
-    <p>No matter your distance from the canvas your image is a beautiful, yet mesmerizing, and intreging composition.</p>
-    <figure><%= image_tag "bottomcanvas.jpg" %></figure>
-  </section>
-  <section class="gallery explain">
-	  <h3>See for Yourself</h3>
-    <ul>
-      <li><%= image_tag "sample_corner.jpg", class: "sample" %></li>
-      <li><%= image_tag "sample_me_edge.jpg", class: "sample" %></li>
-      <li><%= image_tag "sample_double.jpg", class: "sample" %></li>
-      <li><%= image_tag "sample_close2.jpg", class: "sample" %></li>
-    </ul>
-	  <p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
-  </section>
-</article>
+<section class="explain-hero explain">
+  <h2>Turn your <em>Instagram photos</em> into <em>clever</em>, unexpected, beautiful, <em>typographic</em> works of <em>art</em></h2>
+  <figure>
+    <%= image_tag "hero2.png" %>
+  </figure>
+  <p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
+</section>
+<section class="explain-steps explain">
+  <h3>A process so simple and fast, you'll wonder how we did it.</h3>
+  <ol>
+    <li>
+      <p>Select a photo from instagram. Any photo will work, but we find portraits to be especially amazing.</p>
+      <figure><%= image_tag "hand_iphone.jpg" %></figure>
+    </li>
+    <li>
+      <p>Your photo is coverted into an original grid of type 150 by 150 characters.</p>
+      <figure><%= image_tag "magnify2.png" %></figure>
+    </li>
+    <li>
+      <p>The finished product is printed on high quality gallery wrap canvas and shipped to your door.</p>
+      <figure><%= image_tag "hung2.jpg" %></figure>
+    </li>
+  </ol>
+</section>
+<section class="explain-words explain">
+  <figure><%= image_tag "topcanvas2.jpg" %></figure>
+  <h3>Wait, so what's the deal?</h3>
+  <p>We take your original instagram photograph and using our own special blend of magic, turn it into a grid of typographic characters.</p>
+  <p> Up close you can easily see the individual characters, but as you move further and further back  the type blends together and your photograph resembles a traditional black and white photograph.</p>
+  <p>No matter your distance from the canvas your image is a beautiful, yet mesmerizing, and intreging composition.</p>
+  <figure><%= image_tag "bottomcanvas.jpg" %></figure>
+</section>
+<section class="explain-visual explain">
+	<h3>More of a visual person? That's cool, so are we.</h3>
+  <figure><%= image_tag "sample_corner.jpg", class: "sample" %></figure>
+	<p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
+</section>
