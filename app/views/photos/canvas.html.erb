@@ -1,33 +1,47 @@
-<div class="scene scene-1" data-photo-url="<%= canvas_photo_url(@photo.id, format: :png) %>">
+<div class="scene scene-1" data-photo-url="<%= preview_new_line_item_url(@line_item.as_params(:png)) %>">
   <div class="panels">
     <% %w(front top bottom left right).each do |side| %>
-      <div style="background-image: url(<%= canvas_photo_url(@photo.id, format: :png) %>);" class="panel panel-<%= side %>"></div>
+      <div style="background-image: url(<%= preview_new_line_item_url(@line_item.as_params(:png)) %>);" class="panel panel-<%= side %>"></div>
     <% end %>
   </div>
   <div class="floor"></div>
   <div class="toolbar">
-    <input type="radio" name="scene" id="scene-1" value="1" checked>
-    <input type="radio" name="scene" id="scene-2" value="2">
-    <input type="radio" name="scene" id="scene-3" value="3">
+    <fieldset>
+      <input type="radio" name="contrast" value="0" checked>
+      <input type="radio" name="contrast" value="25">
+      <input type="radio" name="contrast" value="50">
+      <input type="radio" name="contrast" value="75">
+      <label>Contrast</label>
+    </fieldset>
+    <fieldset>
+      <input type="radio" name="scene" id="scene-1" value="1" checked>
+      <input type="radio" name="scene" id="scene-2" value="2">
+      <input type="radio" name="scene" id="scene-3" value="3">
+      <label>View</label>
+    </fieldset>
+    <fieldset>
+      <input type="radio" name="brightness" value="0" checked>
+      <input type="radio" name="brightness" value="25">
+      <input type="radio" name="brightness" value="50">
+      <input type="radio" name="brightness" value="75">
+      <label>Brightness</label>
+    </fieldset>
   </div>
-</div>  
-<p>You should order something</p>
+</div>
+<div class="product">
+  <h2>Choose a size:</h2>
+  <div>
+    <div><%= @line_item.product.size %></div>
+    <div><%= number_to_currency(@line_item.product.price) %></div>
+  </div>
 
-<%= form_for :line_item, url: cart_line_items_path do |form| %>
-  <fieldset>
-    <%= form.label :product_id %>
-    <%= form.select :product_id, Product.canvases.map { |p| ["#{p.good} - #{p.size}", p.id ] } %>
-  </fieldset>
-  <fieldset>
-    <%= form.label :contrast %>
-    <%= form.select :contrast, contrast_levels %>
-  </fieldset>
-  <fieldset>
-    <%= form.label :brightness %>
-    <%= form.select :brightness, brightness_levels %>
-  </fieldset>
-  <%= form.hidden_field :photo_id, value: @photo.id %>    
-  <%= form.submit "Purchase" %>
-<% end %>
+  <%= form_for @line_item do |form| %>
+    <%= form.hidden_field :brightness %> 
+    <%= form.hidden_field :contrast %>    
+    <%= form.hidden_field :photo_id %>    
+    <%= form.hidden_field :product_id %>
+    <%= form.submit "Add to cart - #{number_to_currency(@line_item.product.price)}" %>
+  <% end %>
+</div>
 
 

@@ -1,13 +1,13 @@
 class Renderer
   attr_reader :url, :width, :height
-  attr_accessor :type, :size, :bright, :contrast
+  attr_accessor :type, :size, :brightness, :contrast
 
   def initialize(url, width, height, options = {})
     @url = url
     @width = width
     @height = height
 
-    defaults = { type: :pdf, size: 1080, bright: 0, contrast: 0 }
+    defaults = { type: :pdf, size: 1080, brightness: 0, contrast: 0 }
 
     defaults.merge(options).each do |name, value|
       send("#{name}=", value)
@@ -31,7 +31,7 @@ class Renderer
     # TODO: We could possibly store the pixel values from stream into memcached
     #       We would need to test obviously how fast that is vs just using stream
 
-    context.render(bright: self.bright, contrast: self.contrast)
+    context.render(bright: self.brightness, contrast: self.contrast)
 
     ird, iwr = IO.pipe
     ord, owr = IO.pipe

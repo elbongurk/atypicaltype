@@ -16,6 +16,10 @@ header[role=banner] {
     display: block;
     float: right;
     margin-right: 20px;
+    color: #666;
+    font-family: "Gotham Light Italic";
+    font-weight: 400;
+    font-size: 0.8em;
   }
 }
 
@@ -41,11 +45,20 @@ header[role=banner] {
     }
     @include media($tablet) {
       @include span-columns(4 of 6);
+      text-align: right;
+      margin-top: 20px;
       li {
         display: inline-block;
       }
       li.go-nav {
         display: none;
+      }
+      a {
+        color: #EE257B;
+        font-family: "Landmark Regular";
+        font-weight: 400;
+        text-decoration: none;
+        margin-left: 40px;
       }
     }
   }
@@ -71,6 +84,11 @@ article[role=main] {
 	border-radius: 15px;
 	display: inline-block;
 	margin: 15px 0;
+}
+
+.button-small {
+  font-size: 1em;
+  padding: 10px;
 }
 
 footer[role=contentinfo] {

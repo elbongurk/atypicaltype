@@ -7,7 +7,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <body data-controller="<%= controller_name =%>" data-action="<%= action_name %>">
+  <body>
     <header role="banner">
       <div class="wrapper">
         <div class="marketing"><i class="icon-truck"></i> free domestic shipping!</div>
@@ -23,7 +23,7 @@
         </nav>
       </div>
     </header>
-    <article role="main">
+    <article role="main" id="<%= controller_name =%>" class="<%= action_name %>">
       <%= yield %>
     </article>
     <footer role="contentinfo">

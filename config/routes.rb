@@ -3,25 +3,24 @@ AtypicalType::Application.routes.draw do
   get 'sign_in', to: 'o_auth#connect'
   get 'sign_out', to: 'o_auth#disconnect'
 
-  resources :photos, only: [:index, :show] do 
-    member do
-      get 'canvas'
-    end
+  resources :photos, only: [:index, :show] do
+    get 'canvas', on: :member
   end
 
-  resource :cart, only: [:show] do
-    resources :line_items, only: [:create, :update, :destroy]
+  resource :cart, only: [:show]
+
+  resources :line_items, only: [:create, :update, :destroy, :show] do
+    get 'preview', on: :new
   end
 
   resources :orders, only: [:new, :create, :index, :show] do
-    member do
-      get 'purchase'
-      get 'confirm'
-    end
+    get 'purchase', on: :member
+    get 'confirm', on: :member
   end
 
   get 'privacy', to: 'pages#privacy'
   get 'terms', to: 'pages#terms'
+
   root to: 'pages#welcome'
 
   if Rails.env.development?

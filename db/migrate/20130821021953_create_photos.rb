@@ -1,8 +1,6 @@
 class CreatePhotos < ActiveRecord::Migration
   def up
-    enable_extension 'uuid-ossp'
-
-    create_table :photos, id: :uuid do |t|
+    create_table :photos do |t|
       t.string :url, null: false
       t.integer :width, null: false
       t.integer :height, null: false
