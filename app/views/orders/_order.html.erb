@@ -1,1 +1,21 @@
-<p>I am an order with ID <%= order.id %>!</p>
+<%= render partial: "carts/cart_frozen", object: order.cart  %>
+<table class="totals">
+  <tr>
+    <th>Subtotal:</th>
+    <td><%= number_to_currency(order.subtotal) %></td>
+  </tr>
+  <tr>
+    <th>Shipping:</th>
+    <td><%= number_to_currency(order.shipping) %></td>
+  </tr>
+  <tr>
+    <th>Tax:</th>
+    <td><%= number_to_currency(order.tax) %></td>
+  </tr>
+  <tr>
+    <th>Total:</th>
+    <td><%= number_to_currency(order.total) %></td>
+  </tr>
+</table>
+
+

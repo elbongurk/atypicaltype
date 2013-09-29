@@ -5,9 +5,17 @@ class LineItemsController < ApplicationController
   def create
     line_item = current_user.cart.line_items.where(create_params).first_or_initialize
 
-    line_item.quantity += 1 unless line_item.new?
+    line_item.quantity += 1 unless line_item.new_record?
 
     line_item.save
+
+    redirect_to cart_url
+  end
+
+  def destroy
+    line_item = current_user.cart.line_items.find(params[:id])
+    
+    line_item.destroy
 
     redirect_to cart_url
   end

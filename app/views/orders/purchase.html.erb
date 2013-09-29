@@ -1,4 +1,7 @@
-<%= form_for :transaction, builder: BraintreeFormBuilder, url: Braintree::TransparentRedirect.url, params: @result && @result.params[:transaction], errors: @result && @result.errors.for(:transaction) do |form| %>
+<h2>Order Details</h2>
+<%= render @order %>
+<h2>Billing Information</h2>
+<%= form_for :transaction, builder: BraintreeFormBuilder, url: Braintree::TransparentRedirect.url, params: @result && @result.params[:transaction], errors: @result && @result.errors.for(:transaction), class: "ll" do |form| %>
   <%= form.errors %>
   <%= form.fields_for :credit_card do |card| %>
     <%= card.fieldset_for :number do |number| %>
@@ -12,5 +15,7 @@
     <% end %>
   <% end %>
   <%= form.tr_data confirm_order_url(@order), amount: @order.total %>
-  <%= form.submit "Create Order" %>
+  <div class="buttons">
+    <%= form.submit "Place Order", class: "button" %>
+  </div>
 <% end %>

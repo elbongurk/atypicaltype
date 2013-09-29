@@ -1,4 +1,5 @@
-<%= form_for @order, builder: FormBuilder do |form| %>
+<h2>Shipping information</h2>
+<%= form_for @order, builder: FormBuilder, class: "ll" do |form| %>
   <%= form.errors %>
   <%= form.fieldset_for :name do |name| %>
     <%= name.label %>
@@ -9,11 +10,11 @@
     <%= email.email_field %>
   <% end %>
   <%= form.fieldset_for :address1 do |address| %>
-    <%= address.label %>
+    <%= address.label "Address 1" %>
     <%= address.text_field %>  
   <% end %>
   <%= form.fieldset_for :address2 do |address| %>
-    <%= address.label %>
+    <%= address.label "Address 2" %>
     <%= address.text_field %>  
   <% end %>
   <%= form.fieldset_for :city do |city| %>
@@ -28,5 +29,7 @@
     <%= postal_code.label %>
     <%= postal_code.text_field %>  
   <% end %>
-  <%= form.submit "Continue Order" %>
+  <div class="buttons">
+    <%= form.submit "Continue Order", class: "button" %>
+  </div>
 <% end %>

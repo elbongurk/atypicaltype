@@ -1,0 +1,11 @@
+<table class="cart">
+  <tr>
+    <th class="preview"></th>
+    <th class="description">Product</th>
+    <th class="price">Price</th>
+    <th class="quantity">Qty</th>
+    <th class="total">Total</th>
+  </tr>
+  <%= render partial: "line_items/line_item_frozen", collection: cart_frozen.line_items %>
+</table>
+

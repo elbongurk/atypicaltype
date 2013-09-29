@@ -3,8 +3,14 @@
 	padding: 0;
 }
 
+table {
+  border-collapse: collapse;
+	border-spacing: 0; 
+}
+
 img {
   max-width: 100%;
+  height: auto;
 }
 
 nav {
@@ -12,3 +18,8 @@ nav {
     list-style: none;
   }
 }
+
+body {
+  font-family: "Gotham Light";
+}
+

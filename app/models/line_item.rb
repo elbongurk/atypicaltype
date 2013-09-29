@@ -3,6 +3,12 @@ class LineItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :photo
 
+  has_many :orders, through: :cart
+
+  def total
+    product.try(:price) * quantity
+  end
+
   def to_png
     renderer(:png)
   end

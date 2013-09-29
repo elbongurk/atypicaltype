@@ -30,22 +30,10 @@
 
 .explain-hero {
   h2 {
-    text-align: center;
-    font-family: "Landmark Regular";
-	  font-weight: 400;
-    font-size: 1.25em;
-    line-height: 1.5;
-    color: #333;
-    margin: 0 20px 15px;
+    margin-bottom: 15px;
     text-transform: uppercase;
     em {
       color: #00aeef;
-    }
-    @include media($tablet) {
-      font-size: 1.5em;
-    }
-    @include media($desktop) {
-      font-size: 2em;
     }
   }
 }
@@ -60,6 +48,9 @@
   li {
     @include media($tablet) {
       @include span-columns(2 of 6);
+    }
+    @include media($desktop) {
+      @include span-columns(4 of 12);
     }
   }
   li:before {
@@ -84,10 +75,16 @@
 
 .explain-words {
   p {
-    @include media($tablet) {
+    @include media($tablet-up) {
       padding: 0;
+    }
+    @include media($tablet) {
       @include shift(1);
       @include span-columns(4 of 6);
+    }
+    @include media($desktop) {
+      @include shift(2);
+      @include span-columns(8 of 12);
     }
   }
 }

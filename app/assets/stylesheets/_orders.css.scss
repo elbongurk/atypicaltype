@@ -1,0 +1,14 @@
+#orders.new, #orders.create, #orders.purchase, #orders.confirm {
+  form {
+    padding: 15px;
+    margin-bottom: 50px;
+    @include media($tablet) {
+      @include span-columns(4 of 6);
+      @include shift(1);
+    }
+    @include media($desktop) {
+      @include span-columns(8 of 12);
+      @include shift(2);
+    }
+  }
+}

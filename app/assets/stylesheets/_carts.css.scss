@@ -1,0 +1,52 @@
+table.cart {
+  @include fill-parent;
+  margin-bottom: 15px;
+  font-size: 0.6em;
+
+  th, td {
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .description {
+    text-align: left;
+    width: 55%;
+  }
+  
+  .total {
+    text-align: right;
+  }
+  
+  .preview {
+    min-width: 50px;
+    max-width: 100px;
+  }
+
+  @include media($phablet-up) {
+    font-size: 1em;
+  }
+}
+
+table.totals {
+  @include fill-parent;
+  text-align: right;
+  th {
+    @include fill-parent;
+  }
+  th, td {
+    padding: 10px 5px 10px 10px;
+    text-transform: uppercase;
+    @include media($tablet) {
+      font-size: 1.2em;
+    }
+    @include media($desktop) {
+      font-size: 1.4em;
+    }
+  }
+}
+
+
+#carts.show {
+  margin-bottom: 50px;
+}
