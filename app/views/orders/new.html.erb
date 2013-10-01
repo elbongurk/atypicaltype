@@ -1,5 +1,5 @@
 <h2>Shipping information</h2>
-<%= form_for @order, builder: FormBuilder, class: "ll" do |form| %>
+<%= form_for @order, builder: FormBuilder do |form| %>
   <%= form.errors %>
   <%= form.fieldset_for :name do |name| %>
     <%= name.label %>

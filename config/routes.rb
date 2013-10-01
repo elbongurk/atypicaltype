@@ -8,6 +8,7 @@ AtypicalType::Application.routes.draw do
   end
 
   resource :cart, only: [:show]
+  resource :user, only: [:edit, :update]
 
   resources :line_items, only: [:create, :update, :destroy, :show] do
     get 'preview', on: :new

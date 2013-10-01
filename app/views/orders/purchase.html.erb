@@ -1,7 +1,7 @@
 <h2>Order Details</h2>
 <%= render @order %>
 <h2>Billing Information</h2>
-<%= form_for :transaction, builder: BraintreeFormBuilder, url: Braintree::TransparentRedirect.url, params: @result && @result.params[:transaction], errors: @result && @result.errors.for(:transaction), class: "ll" do |form| %>
+<%= form_for :transaction, builder: BraintreeFormBuilder, url: Braintree::TransparentRedirect.url, params: @result && @result.params[:transaction], errors: @result && @result.errors.for(:transaction) do |form| %>
   <%= form.errors %>
   <%= form.fields_for :credit_card do |card| %>
     <%= card.fieldset_for :number do |number| %>

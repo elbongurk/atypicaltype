@@ -10,18 +10,24 @@
   <body>
     <header role="banner">
       <div class="wrapper">
-        <div class="marketing"><i class="icon-truck"></i> free domestic shipping!</div>
+        <div class="marketing">
+          <% if signed_in? %>
+            hello @<%= current_user.username %>!<i class="icon-truck"></i> 
+          <% else %>
+            <i class="icon-truck"></i> free domestic shipping!
+          <% end %>
+        </div>
         <nav id="top-menu">
           <h1><%= link_to image_tag("logo.png"), root_path %></h1>
           <ul>
             <% if signed_in? %>
+              <li><%= link_to "Photos", photos_path %></li>
               <li><%= link_to "Sign out", sign_out_path %></li>
             <% else %>
               <li><%= link_to "Sign In", sign_in_path %></li>
             <% end %>
-            <li><%= link_to "Terms", terms_path %></li>
-            <li><%= link_to "Privacy", privacy_path %></li>
-            <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
+            <li class="go-nav"><i class="icon-reorder"></i><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
+            <li class="go-nav"><i class="icon-shopping-cart"></i></li>
           </ul>
         </nav>
       </div>
@@ -35,6 +41,8 @@
           <h3>Atypical Type</h3>
     	    <ul>
             <% if signed_in? %>
+              <li><%= link_to "Account", photos_path %></li>
+              <li><%= link_to "Photos", photos_path %></li>
               <li><%= link_to "Sign out", sign_out_path %></li>
             <% else %>
               <li><%= link_to "Sign In", sign_in_path %></li>

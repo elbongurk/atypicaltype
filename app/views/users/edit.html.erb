@@ -1,0 +1,15 @@
+<h2>@<%= current_user.username %>'s Account</h2>
+<%= form_for current_user, builder: FormBuilder do |form| %>
+  <%= form.errors %>
+  <%= form.fieldset_for :send_process_email, class: "check" do |process| %>
+    <%= process.check_box %>
+    <%= process.label "Send order has been processed email" %>
+  <% end %>
+  <%= form.fieldset_for :send_ship_email, class: "check" do |ship| %>
+    <%= ship.check_box %>
+    <%= ship.label "Send order has been shipped email" %>
+  <% end %>
+    <div class="buttons">
+    <%= form.submit "Update Profile", class: "button" %>
+  </div>
+<% end %>

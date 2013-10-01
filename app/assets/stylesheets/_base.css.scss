@@ -171,18 +171,29 @@ form {
 	    min-width: 25%;
 	    margin: 0;
     }
+  }
 
-    p.form-error {
-	    margin: 5px 0 0 20%;
-	    font-size: 12px;
-	    color: #333;
+  p.form-error {
+	  margin: 5px 0 0 20%;
+	  font-size: 12px;
+	  color: #333;
+  }
 
-      @include media($mobile) {
-		    margin-left: 0;
-		    padding-left: 0;
-      }
+  fieldset.check {
+    padding-left: 20%;
+    label {
+      display: inline;
+	    float: none;
+	    width: auto;
+	    font-weight: normal;
     }
-    
+  }
+
+  p.form-error, fieldset.check {
+    @include media($mobile) {
+		  margin-left: 0;
+		  padding-left: 0;
+    }
   }
 }
 

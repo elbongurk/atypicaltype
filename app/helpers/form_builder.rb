@@ -30,6 +30,10 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     super(method, with_options(method, options))
   end
 
+  def check_box(method = @method, options = {})
+    super(method, with_options(method, options))
+  end
+
   def email_field(method = @method, options = {})
     super(method, with_options(method, options))
   end

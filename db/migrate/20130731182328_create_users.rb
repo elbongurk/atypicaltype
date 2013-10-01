@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, null: false
       t.string :name
       t.string :avatar_url, null: false
+      t.boolean :send_process_email, null: false, default: true
+      t.boolean :send_ship_email, null: false, default: true
       t.timestamps null: false
     end
 

@@ -10,4 +10,3 @@ class @Cart
   submitForm: (event) =>
     form = @root.querySelector("form.edit_line_item")
     form.submit() if form
-      
