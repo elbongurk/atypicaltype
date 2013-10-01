@@ -1,21 +1,31 @@
 <%= render partial: "carts/cart_frozen", object: order.cart  %>
-<table class="totals">
-  <tr>
-    <th>Subtotal:</th>
-    <td><%= number_to_currency(order.subtotal) %></td>
-  </tr>
-  <tr>
-    <th>Shipping:</th>
-    <td><%= number_to_currency(order.shipping) %></td>
-  </tr>
-  <tr>
-    <th>Tax:</th>
-    <td><%= number_to_currency(order.tax) %></td>
-  </tr>
-  <tr>
-    <th>Total:</th>
-    <td><%= number_to_currency(order.total) %></td>
-  </tr>
-</table>
+<div class="order-meta">
+  <dl class="order-meta-shipping">
+    <dt>Recipient</dt>
+    <dd>
+      <%= order.name %><br>
+      <%= order.email %>
+    </dd>
+    <dt>Shipping Address</dt>
+    <dd>
+      <%= order.address1 %><br>
+      <% if order.address2.present? %>
+        <%= order.address2 %><br>    
+      <% end %>
+      <%= order.city %>, <%= order.state %> <%= order.postal_code %><br>
+      United States
+    </dd>
+  </dl>  
+  <dl class="order-meta-totals">
+    <dt>Subtotal:</dt>
+    <dd><%= number_to_currency(order.subtotal) %></dd>
+    <dt>Shipping:</dt>
+    <dd><%= number_to_currency(order.shipping) %></dd>
+    <dt>Tax:</dt>
+    <dd><%= number_to_currency(order.tax) %></dd>
+    <dt>Total:</dt>
+    <dd><%= number_to_currency(order.total) %></dd>
+  </dl>
+</div>
 
 

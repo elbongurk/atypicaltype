@@ -30,12 +30,24 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def update
+    @line_item = LineItem.find(params[:id])
+
+    @line_item.update(update_params)
+
+    redirect_to cart_url
+  end
+
   def show
     @line_item = LineItem.find(params[:id])
     respond_with(@line_item)
   end
   
   private
+
+  def update_params
+    params.require(:line_item).permit(:quantity)
+  end
 
   def create_params
     params.require(:line_item).permit(:product_id, :photo_id, :contrast, :brightness)

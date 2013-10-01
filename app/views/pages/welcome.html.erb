@@ -3,7 +3,13 @@
   <figure>
     <%= image_tag "hero2.png" %>
   </figure>
-  <p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
+  <p class="buttons">
+    <% if signed_in? %>
+      <%= link_to "Get Started", photos_path, class: "button" %>
+    <% else %>
+      <%= link_to "Get Started", sign_in_path, class: "button" %>
+    <% end %>
+  </p>
 </section>
 <section class="explain-steps explain">
   <h3>A process so simple and fast, you'll wonder how we did it.</h3>
@@ -33,5 +39,11 @@
 <section class="explain-visual explain">
 	<h3>More of a visual person? That's cool, so are we.</h3>
   <figure><%= image_tag "sample_corner.jpg", class: "sample" %></figure>
-	<p class="buttons"><%= link_to "get started", sign_in_path, class: "button" %></p>
+	<p class="buttons">
+    <% if signed_in? %>
+      <%= link_to "Get Started", photos_path, class: "button" %>
+    <% else %>
+      <%= link_to "Get Started", sign_in_path, class: "button" %>
+    <% end %>
+  </p>
 </section>

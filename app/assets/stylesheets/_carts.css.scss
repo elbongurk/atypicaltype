@@ -17,7 +17,7 @@ table.cart {
   .total {
     text-align: right;
   }
-  
+
   .preview {
     min-width: 50px;
     max-width: 100px;
@@ -28,24 +28,86 @@ table.cart {
   }
 }
 
-table.totals {
-  @include fill-parent;
-  text-align: right;
-  th {
-    @include fill-parent;
+.cart-meta, .order-meta {
+  @include clearfix;
+  background-color: #ccc;
+
+  font-size: 0.625em;
+  padding: 10px;
+  margin-bottom: 30px;
+
+  dt {
+    font-weight: 600;
   }
-  th, td {
-    padding: 10px 5px 10px 10px;
-    text-transform: uppercase;
-    @include media($tablet) {
-      font-size: 1.2em;
-    }
-    @include media($desktop) {
-      font-size: 1.4em;
-    }
+
+  @include media($phablet-up) {
+    font-size: 1em;
   }
 }
 
+dl.order-meta-shipping {
+  dd {
+    margin-bottom: 10px;
+  }
+
+  @include media($mobile) {
+    @include span-columns(2 of 4);
+  }
+  @include media($tablet) {
+    @include span-columns(3 of 6);
+  }
+  @include media($desktop) {
+    @include span-columns(6 of 12);
+  }
+}
+
+dl.order-meta-totals {
+  @include media($mobile) {
+    @include span-columns(2 of 4);
+  }
+  @include media($tablet) {
+    @include span-columns(2 of 6);
+    @include shift(1);
+  }
+  @include media($desktop) {
+    @include span-columns(4 of 12);
+    @include shift(2);
+  }
+}
+
+dl.cart-meta-totals {
+  @include media($mobile) {
+    @include span-columns(2 of 4);
+    @include shift(2);
+  }
+  @include media($tablet) {
+    @include span-columns(2 of 6);
+    @include shift(4);
+  }
+  @include media($desktop) {
+    @include span-columns(4 of 12);
+    @include shift(8);
+  }
+}
+
+dl.cart-meta-totals, dl.order-meta-totals {
+  dt, dd {
+    text-align: right;
+    @include media($mobile) {
+      @include span-columns(1 of 2);
+    }
+    @include media($tablet) {
+      @include span-columns(1 of 2);
+    }
+    @include media($desktop) {
+      @include span-columns(2 of 4);
+    }
+  }
+
+  dd {
+    @include omega;
+  }
+}
 
 #carts.show {
   margin-bottom: 50px;

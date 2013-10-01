@@ -4,12 +4,12 @@
   <p>You don't have any items in your cart yet. Perhaps its time to look around and <%= link_to "find something!", photos_path %></p>
 <% else %>
   <%= render @cart %>
-  <table class="totals">
-    <tr>
-      <th>Subtotal:</th>
-      <td><%= number_to_currency(@cart.total) %></td>
-    </tr>
-  </table>
+  <div class="cart-meta">
+    <dl class="cart-meta-totals">
+      <dt>Subtotal:</dt>
+      <dd><%= number_to_currency(@cart.total) %></dd>
+    </dl>
+  </div>
   <p class="buttons"><%= link_to "Checkout", new_order_path, class: "button" %><br> or <%= link_to "Keep shopping", photos_path %></p>
 <% end %>
 

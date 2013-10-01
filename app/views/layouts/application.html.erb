@@ -14,10 +14,13 @@
         <nav id="top-menu">
           <h1><%= link_to image_tag("logo.png"), root_path %></h1>
           <ul>
-            <li><%= link_to "Sign In", "#" %></li>
-            <li><%= link_to "Blog", "#" %></li>
-            <li><%= link_to "About", "#" %></li>
-            <li><%= link_to "Contact Us", "#" %></li>
+            <% if signed_in? %>
+              <li><%= link_to "Sign out", sign_out_path %></li>
+            <% else %>
+              <li><%= link_to "Sign In", sign_in_path %></li>
+            <% end %>
+            <li><%= link_to "Terms", terms_path %></li>
+            <li><%= link_to "Privacy", privacy_path %></li>
             <li class="go-nav"><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
           </ul>
         </nav>
@@ -31,10 +34,11 @@
         <nav id="bottom-menu" class="menu widget">        
           <h3>Atypical Type</h3>
     	    <ul>
-      	    <li><%= link_to "Sign In", sign_in_path %></li>
-				    <li><a href="#">Blog</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <% if signed_in? %>
+              <li><%= link_to "Sign out", sign_out_path %></li>
+            <% else %>
+              <li><%= link_to "Sign In", sign_in_path %></li>
+            <% end %>
             <li><%= link_to "Terms & Conditions", terms_path %></li>
             <li><%= link_to "Privacy Policy", privacy_path %></li>
           </ul>

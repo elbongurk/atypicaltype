@@ -5,13 +5,19 @@
   <%= form.errors %>
   <%= form.fields_for :credit_card do |card| %>
     <%= card.fieldset_for :number do |number| %>
-      <%= number.label %>
+      <%= number.label "Card number" %>
       <%= number.text_field %>
     <% end %>
     <%= card.fieldset_for :expiration_date do |expiration_date| %>
-      <%= expiration_date.label %>
+      <%= expiration_date.label "Expires on" %>
       <%= expiration_date.select :expiration_month, cc_months %>
       <%= expiration_date.select :expiration_year, cc_years %>
+    <% end %>
+  <% end %>
+  <%= form.fields_for :billing do |billing| %>
+    <%= billing.fieldset_for :postal_code do |postal_code| %>
+      <%= postal_code.label "Billing Zip" %>
+      <%= postal_code.text_field %>
     <% end %>
   <% end %>
   <%= form.tr_data confirm_order_url(@order), amount: @order.total %>

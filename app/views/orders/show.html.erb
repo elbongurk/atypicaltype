@@ -1,18 +1,6 @@
 <h2>Congrats, your order has been placed</h2>
-<p>Here is your order number:</p>
-<p><%= @order.number %></p>
-
+<h3>Order Number: <%= @order.number %></h3>
 <%= render @order %>
-
-<p>Your order will be shipped to:</p>
-
-<p>
-  <%= @order.name %><br>
-  <%= @order.address1 %><br>
-  <% if @order.address2.present? %>
-    <%= @order.address2 %><br>
-  <% end %>
-  <%= @order.city %>, <%= @order.state %> <%= @order.postal_code %><br>
-</p>
-
-<p>Thank you for your order. We will email you when your order has been processed. Until then, this screen serves as your receipt, please <a href="javascript:window.print();">print</a> for your records.</p>
+<p>Thank you for your order. We will email you when your order has been processed. Until then, this screen serves as your receipt, so please <a href="javascript:window.print();">print</a> it for your records.</p>
+<p>If anything's wrong, please do not hesitate to contact us ASAP and let us know what should be changed.</p>
+<p>You can call us at +1 (715) 252-9718 from 9am to 5pm (CST).</p>
