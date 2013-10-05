@@ -3,3 +3,4 @@
 document.addEventListener "DOMContentLoaded", ->
   Scene.load()
   Cart.load()
+  SlideShow.load()

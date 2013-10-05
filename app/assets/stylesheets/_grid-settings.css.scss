@@ -2,7 +2,7 @@
 
 $grid-columns: 4;
 $max-width: em(1024);
-$visual-grid: true;
+//$visual-grid: true;
 
 $mobile: new-breakpoint(max-width em(704), 4);
 $phablet: new-breakpoint(min-width em(496) max-width em(704), 4);

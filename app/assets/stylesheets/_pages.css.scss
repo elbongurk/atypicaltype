@@ -1,5 +1,20 @@
 #pages.welcome {
-  
+  .hero-text {
+    @include media($phablet) {
+      font-size: 1.8em;
+      padding: 0 5%;
+    }
+    @include media($tablet) {
+      font-size: 2em;
+      padding: 0 12%;
+      margin-top: -20px;
+      margin-bottom: 30px;
+    }
+    @include media($desktop) {
+      font-size: 2.5em;
+      padding: 0 15%;
+    }
+  }
 }
 
 
@@ -8,18 +23,31 @@
   
   h3 {
     text-align: center;
-    font-size: 1.8em;
+    font-size: 1.2em;
     margin-bottom: 25px;
-    line-height: 1.8;
+    line-height: 1.5;
     font-family: "Gotham Light";
     color: #333;
+    padding: 0 8%;
+    @include media($phablet) {
+      font-size: 1.4em;
+      padding: 0 12%;
+    }
+    @include media($tablet) {
+      font-size: 1.8em;
+      padding: 0 15%;
+    }
+    @include media($desktop) {
+      font-size: 2em;
+      padding: 0 20%;
+    }
   }
 
   p {
     font-family: "Gotham Light";
     line-height: 1.5;
     font-size: 1em;
-    padding: 0 30px;
+    padding: 0 5%;
     margin-bottom: 18px;
   }
 
@@ -41,9 +69,13 @@
 .explain-steps {
   color: #333;
   ol {
+    padding: 0 5%;
     @include outer-container;
     counter-reset: step-counter;
     list-style: none;
+    @include media($phablet) {
+      padding: 0 8%;
+    }
   }
   li {
     @include media($tablet) {
@@ -63,28 +95,34 @@
     margin: -5px 10px 0;
   }
   p {
-    font-size: 0.85em;
+    font-size: 0.8em;
     line-height: 1.5;
     margin-bottom: 0px;
     padding-left: 30px;
+    @include media($phablet) {
+      font-size: 0.9em;
+    }
   }
   figure {
-    padding: 10px 30px;
+    padding: 10px 30px 35px;
   }
 }
 
 .explain-words {
+  figure {
+    margin-bottom: 26px;
+    margin-top: 26px;
+  }
   p {
+    font-size: 0.8em;
+    padding: 0 10%;
+    @include media($phablet) {
+      font-size: 0.9em;
+      padding: 0 15%;
+    }
     @include media($tablet-up) {
-      padding: 0;
-    }
-    @include media($tablet) {
-      @include span-columns(4 of 6);
-      @include shift(1);
-    }
-    @include media($desktop) {
-      @include span-columns(8 of 12);
-      @include shift(2);
+      font-size: 1em;
+      padding: 0 20%;
     }
   }
 }

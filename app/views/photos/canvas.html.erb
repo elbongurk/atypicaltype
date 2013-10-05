@@ -27,20 +27,44 @@
       <label>Brightness</label>
     </fieldset>
   </div>
+  <div class="navbar">
+    <a href="<%= photos_path %>" class="photo-back">
+      <%= image_tag "angle_bracket.png" %>
+      <%= image_tag @line_item.photo.url, class: "photo-choosen" %>
+    </a>
+    Free shipping on orders over $50!
+  </div>
 </div>
 <div class="product">
-  <h2>Choose a size:</h2>
-  <div>
-    <div><%= @line_item.product.size %></div>
-    <div><%= number_to_currency(@line_item.product.price) %></div>
+  <h2>Choose your canvas size:</h2>
+  <div class="product-sizes">  
+    <div class="product-size product-size-selected">
+      <div><%= @line_item.product.size %></div>
+      <div><%= number_to_currency(@line_item.product.price) %></div>
+    </div>
+    <div class="product-size product-size-disabled">
+      <div>16" x 16"</div>
+      <div>$79.00</div>
+    </div>
   </div>
-
+  <p>* <em>The canvas measures 1.5" deep, so please keep in mind that 1.5" of your photo will wrap around each of the four sides.</em></p>
+  <h2>Product Details</h2>
+  <ul>
+    <li>Poly-cotton blend canvas</li>
+    <li>20.5 mil thick canvas</li>
+    <li>Fade resistant</li>
+    <li>Hand stretched</li>
+    <li>Hand glued solid wood stretch bars</li>
+    <li>Matte finish coating</li>
+  </ul>
   <%= form_for @line_item do |form| %>
     <%= form.hidden_field :brightness %> 
     <%= form.hidden_field :contrast %>    
     <%= form.hidden_field :photo_id %>    
     <%= form.hidden_field :product_id %>
-    <%= form.submit "Add to cart - #{number_to_currency(@line_item.product.price)}" %>
+    <div class="buttons">
+      <%= form.submit "Add to cart - #{number_to_currency(@line_item.product.price)}", class: "button-small button" %>
+    </div>
   <% end %>
 </div>
 

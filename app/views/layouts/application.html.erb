@@ -10,24 +10,35 @@
   <body>
     <header role="banner">
       <div class="wrapper">
-        <div class="marketing">
-          <% if signed_in? %>
-            hello @<%= current_user.username %>!<i class="icon-truck"></i> 
-          <% else %>
-            <i class="icon-truck"></i> free domestic shipping!
-          <% end %>
-        </div>
-        <nav id="top-menu">
-          <h1><%= link_to image_tag("logo.png"), root_path %></h1>
+        <nav class="mobile-skip">
+          <ul>
+            <li><a href="#bottom-menu"><i class="icon-reorder"></i></a></li>
+          </ul>
+        </nav>
+        <h1><%= link_to image_tag("logo.png"), root_path %></h1>
+        <nav class="user-menu">
           <ul>
             <% if signed_in? %>
-              <li><%= link_to "Photos", photos_path %></li>
-              <li><%= link_to "Sign out", sign_out_path %></li>
+              <li class="user-menu-account">
+                <a href="<%= edit_user_path %>">
+                  <%= image_tag(current_user.avatar_url) %><br>
+                  profile
+                </a>
+              </li>
+              <li class="user-menu-cart">
+                <a href="<%= cart_path %>">
+                  <%= image_tag("cart.png") %><br>
+                  cart (<%= current_user.cart.line_items.count %>)
+                </a>
+              </li>
             <% else %>
-              <li><%= link_to "Sign In", sign_in_path %></li>
+              <li class="user-menu-sign-in">
+                <a href="<%= sign_in_path %>">
+                  <%= image_tag("sign-in.png") %><br>
+                  sign in
+                </a>
+              </li>
             <% end %>
-            <li class="go-nav"><i class="icon-reorder"></i><%= link_to image_tag("hamburger.png"), "#bottom-menu" %></li>
-            <li class="go-nav"><i class="icon-shopping-cart"></i></li>
           </ul>
         </nav>
       </div>
@@ -41,8 +52,7 @@
           <h3>Atypical Type</h3>
     	    <ul>
             <% if signed_in? %>
-              <li><%= link_to "Account", photos_path %></li>
-              <li><%= link_to "Photos", photos_path %></li>
+              <li class="user-menu-account"><%= link_to "Your Profile", edit_user_path %></li>
               <li><%= link_to "Sign out", sign_out_path %></li>
             <% else %>
               <li><%= link_to "Sign In", sign_in_path %></li>

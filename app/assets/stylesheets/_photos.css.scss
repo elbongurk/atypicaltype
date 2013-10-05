@@ -1,4 +1,5 @@
 
+
 #photos.index {
   li {
     list-style: none;
@@ -22,7 +23,35 @@
   }
 }
 
-#photos.canvas {
+#photos.canvas {  
+  p {
+    text-align: center;
+    font-size: 0.7em;
+    padding: 0 5%;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    @include media($phablet) {
+      padding: 0 15%;
+    }
+    @include media($tablet-up) {
+      padding: 0 10%;
+    }
+  }
+  
+  ul {
+    font-size: 0.8em;
+    text-align: center;
+    line-height: 1.5;
+    list-style: none;
+    @include media($tablet) {
+      font-size: 0.7em;
+    }
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+
   .products {
     list-style: none;
     li {
@@ -36,6 +65,41 @@
     }
   }
 
+  .navbar {
+    font-size: 0.7em;       
+    font-style: italic; 
+    font-weight: 600;
+    background: #E6E7E8;
+    height: 65px;
+
+    /*FIXME*/
+    border-top: 5px solid white;
+    
+    .photo-back {
+      background-color: #CBCBCB;
+      height: 60px;
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 2%;
+    }
+    .photo-back:hover {
+      background-color: #888;
+    }
+    
+    img {
+      vertical-align: middle;      
+    }
+    img.photo-choosen {
+      margin-right: 10px;
+      height: 50px;
+      width: 50px;
+    }
+    
+    @include media($phablet-up) {
+      font-size: 0.8em;
+    }
+  }
+  
   .toolbar {
     text-align: center;
     padding: 10px 0;
@@ -60,6 +124,8 @@
   }
 
   .scene {
+    margin-bottom: 15px;
+
     @include background-image(radial-gradient(center, closest-side, #6a6a6a, #1a1a1a));
     @include media($tablet) {
       @include span-columns(4 of 6);
@@ -76,6 +142,42 @@
     @include media($desktop) {
       @include span-columns(4 of 12);
     }
+  }
+
+  .product-sizes {
+    @include clearfix;
+    margin-bottom: 20px;
+    padding: 0 5%;
+  }
+  
+  .product-size {
+    font-size: 0.8em;
+    text-align: center;
+    line-height: 1.8;
+    background-color: #EAEAEA;
+    border: 5px solid white;
+    @include media($mobile) {
+      @include span-columns(2 of 4);
+    }
+    @include media($tablet) {
+      @include span-columns(1 of 2);
+    }
+    @include media($desktop) {
+      @include span-columns(2 of 4);
+    }
+  }
+  
+  .product-size-selected {
+    border-color: #EC227A;
+  }
+  
+  .product-size:hover {
+    cursor: hand;
+  }
+  
+  .product-size-disabled {
+    text-decoration: line-through;
+    color: #888;    
   }
 
   .scene-1 {

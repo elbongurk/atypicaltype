@@ -8,5 +8,6 @@ log/*.log
 tmp
 
 .bundle
-.env
 .foreman
+.env
+

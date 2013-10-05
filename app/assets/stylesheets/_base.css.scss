@@ -1,11 +1,87 @@
+.slideshow {
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    @include transition (opacity 3.0s ease-in-out);
+  }
+  img:first-child {
+    position: inherit;
+  }
+  img.slide-active {
+    opacity: 1;
+  }
+}
+
 header[role=banner] {
 	border-top: solid thick #F7931D;
 	border-bottom: solid thick #000;
-	padding: 15px 0;
+	padding: 15px 0 0;
 	margin-bottom: 15px;
   position: relative;
+
+  .user-menu li {
+    a {
+      color: #333;
+      font-size: 0.5em;
+      vertical-align: top;
+      
+      @include media($tablet-up) {
+        font-size: 0.8em;
+      }
+      @include media($desktop) {
+        line-height: 1.2;
+      }     
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @include media($tablet) {
+      @include span-columns(1 of 3);
+    }
+    @include media($desktop) {
+      @include span-columns(1 of 8);
+    }
+  }
+  
+  .user-menu-sign-in {
+    @include media($tablet) {
+      @include span-columns(1 of 3);
+      @include shift(2);
+    }
+    @include media($desktop) {
+      @include span-columns(1 of 8);
+      @include shift(7);
+    }
+  }
+
+  .user-menu-account {
+    img {
+      width: 26px;
+      border-radius: 13px;
+    }
+
+    @include media($mobile) {
+      display: none;
+    }
+    @include media($tablet) {
+      @include span-columns(1 of 3);
+      @include shift(1);
+    }
+    @include media($desktop) {
+      @include span-columns(1 of 8);
+      @include shift(6);
+    }
+  }
+
+  @include media($phablet-up) {
+    padding-bottom: 15px;
+  }
+
   @include media($tablet-up) {
-    margin-bottom: 30px;
+    margin-bottom: 60px;
   }
 }
 
@@ -13,69 +89,53 @@ header[role=banner] {
   @include outer-container;
 }
 
-.marketing {
-  display: none;    
+.mobile-skip {
+  text-align: center;
+  margin-bottom: 15px;
+  a {
+    text-decoration: none;
+    color: #333;
+    font-size: 2em;
+  }
+  @include media($mobile) {
+    @include span-columns(1 of 4);
+  }
   @include media($tablet-up) {
-    display: block;
-    float: right;
-    margin-right: 20px;
-    color: #666;
-    font-family: "Gotham Light Italic";
-    font-weight: 400;
-    font-size: 0.8em;
+    display: none;
   }
 }
 
-#top-menu {
-  h1 {
-    @include span-columns(3 of 4);
-    padding: 0 35px;
-    @include media($tablet-up) {
-      padding: 0 0 0 35px;
-    }
-    @include media($tablet) {
-      @include span-columns(2 of 6);
-    }
-    @include media($desktop) {
-      @include span-columns(4 of 12);
-    }
+.user-menu {
+  a {
+    text-decoration: none;
   }
 
-  ul {
-    @include omega;
-    li {
-      display: none;
-    }
-    li.go-nav {
-      text-align: center;
-      display: list-item;
-    }
-    @include media($mobile) {
-      @include span-columns(1 of 4);
-    }
-    @include media($tablet) {
-      @include span-columns(4 of 6);
-    }
-    @include media($desktop) {
-      @include span-columns(8 of 12);
-    }
-    @include media($tablet-up) {
-      text-align: right;
-      margin-top: 20px;
-      li {
-        display: inline-block;
-      }
-      li.go-nav {
-        display: none;
-      }
-      a {
-        color: #EE257B;
-        font-family: "Landmark Regular";
-        font-weight: 400;
-        text-decoration: none;
-        margin-left: 40px;
-      }
-    }
+  text-align: center;
+
+  @include media($mobile) {
+    @include span-columns(1 of 4);
+  }
+  
+  @include media($tablet) {
+    @include span-columns(3 of 6);
+  }
+  @include media($desktop) {
+    @include span-columns(8 of 12);
+  }
+}
+
+h1 {
+  @include media($mobile) {
+    @include span-columns(2 of 4);
+  }
+  @include media($tablet) {
+    padding-left: 15px;
+    padding-right: 50px;
+    @include span-columns(3 of 6);
+  }
+  @include media($desktop) {
+    padding-left: 15px;
+    @include span-columns(4 of 12);
   }
 }
 
@@ -89,7 +149,9 @@ article[role=main] {
     font-size: 1.25em;
     line-height: 1.5;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     @include media($tablet) {
       font-size: 1.5em;
     }
@@ -97,8 +159,11 @@ article[role=main] {
       font-size: 2em;
     }    
     @include media($tablet-up) {
-      margin-bottom: 30px;
+      margin-bottom: 60px;
     }
+  }
+  h2.happy {
+    color: #EE257B;
   }
 }
 
@@ -127,6 +192,7 @@ article[role=main] {
 .button-small {
   font-size: 1em;
   padding: 10px;
+  margin: 20px 0;
 }
 
 form {
@@ -153,7 +219,7 @@ form {
     
     input[type=text], input[type=email] {
 	    display: block;
-	    width: 50%;
+	    width: 80%;
 	    padding: 5px;
 	    font-size: 0.875em;
 	    border: 1px solid #ddd;
@@ -205,7 +271,7 @@ footer[role=contentinfo] {
 
   h3 {
     font-family: "Landmark Regular";
-    font-size: 1.2em;
+    font-size: 0.8em;
     margin-bottom: 5px;
   }
   .widget {
@@ -216,12 +282,16 @@ footer[role=contentinfo] {
     @include media($desktop) {
       @include span-columns(4 of 12);
     }
+    @include media($tablet-up) {
+      padding: 40px 50px 20px;
+    }
   }
   .copyright {
     background-color: #666;
     p {
-      margin: 15px 0;
-      font-size: 0.8em;
+      margin: 15px 0 30px;
+      font-size: 0.7em;
+      line-height: 1.5;
     }
     .love {
       color: #EE257B;
@@ -237,10 +307,10 @@ footer[role=contentinfo] {
       display: block;
       background: #333;
       line-height: 3;
+      font-size: 0.8em;
       @include media($tablet-up) {
         background: inherit;
-        line-height: 1.5;
-        font-size: 1em;
+        line-height: 1.8;
       }
     }
     @include media($tablet-up) {
@@ -254,6 +324,12 @@ footer[role=contentinfo] {
     padding: 10px;
     @include media($tablet-up) {
       clear: left;
+    }
+  }
+
+  .user-menu-account {
+    @include media($tablet-up) {
+      display: none;
     }
   }
 }

@@ -18,8 +18,8 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     @template.content_tag(:fieldset, with_error_text(method, content), options)
   end
 
-  def label(method = @method, options = {})
-    super(method, with_options(method, options))
+  def label(method = @method, label = nil, options = {})
+    super(method, label, with_options(method, options))
   end
 
   def text_field(method = @method, options = {})

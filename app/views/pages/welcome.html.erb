@@ -1,5 +1,5 @@
 <section class="explain-hero explain">
-  <h2>Turn your <em>Instagram photos</em> into <em>clever</em>, unexpected, beautiful, <em>typographic</em> works of <em>art</em></h2>
+  <h2 class="hero-text">Turn your <em>Instagram photos</em> into <em>clever</em>, unexpected, beautiful, <em>typographic</em> works of <em>art</em></h2>
   <figure>
     <%= image_tag "hero2.png" %>
   </figure>
@@ -31,14 +31,19 @@
 <section class="explain-words explain">
   <figure><%= image_tag "topcanvas2.jpg" %></figure>
   <h3>Wait, so what's the deal?</h3>
-  <p>We take your original instagram photograph and using our own special blend of magic, turn it into a grid of typographic characters.</p>
+  <p>We take your original instagram photograph and use our own special blend of magic to turn it into a grid of typographic characters.</p>
   <p> Up close you can easily see the individual characters, but as you move further and further back  the type blends together and your photograph resembles a traditional black and white photograph.</p>
   <p>No matter your distance from the canvas your image is a beautiful, yet mesmerizing, and intreging composition.</p>
   <figure><%= image_tag "bottomcanvas.jpg" %></figure>
 </section>
 <section class="explain-visual explain">
 	<h3>More of a visual person? That's cool, so are we.</h3>
-  <figure><%= image_tag "sample_corner.jpg", class: "sample" %></figure>
+  <figure class="slideshow">
+    <%= image_tag "s_video-01.jpg", class: "slide-active" %>
+    <%= image_tag "s_video-02.jpg" %>
+    <%= image_tag "s_video-03.jpg" %>
+    <%= image_tag "s_video-04.jpg" %>
+  </figure>
 	<p class="buttons">
     <% if signed_in? %>
       <%= link_to "Get Started", photos_path, class: "button" %>
