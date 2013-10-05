@@ -3,7 +3,6 @@
 bin/stubs
 db/*.sqlite3
 db/*.sqlite3-journal
-db/schema.rb
 log/*.log
 tmp
 

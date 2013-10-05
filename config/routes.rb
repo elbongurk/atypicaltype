@@ -4,15 +4,14 @@ AtypicalType::Application.routes.draw do
   get 'sign_out', to: 'o_auth#disconnect'
 
   resources :photos, only: [:index, :show] do
-    get 'canvas', on: :member
+    resources :product_types, only: [:show]
+    resources :products, only: [:show]
   end
 
   resource :cart, only: [:show]
   resource :user, only: [:edit, :update]
 
-  resources :line_items, only: [:create, :update, :destroy, :show] do
-    get 'preview', on: :new
-  end
+  resources :line_items, only: [:create, :update, :destroy]
 
   resources :orders, only: [:new, :create, :index, :show] do
     get 'purchase', on: :member
