@@ -21,6 +21,8 @@ AtypicalType::Application.routes.draw do
 
   get 'privacy', to: 'pages#privacy'
   get 'terms', to: 'pages#terms'
+  get 'about', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
 
   root to: 'pages#welcome'
 
