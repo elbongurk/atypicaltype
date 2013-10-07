@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 4b3eaec8e966d5bca10ad8c8f20a6f76a8f24ce4
+  revision: 64ba1ab09bb2514bea9bf426bb83fd97fe7c6b68
   branch: 4-0-stable
   specs:
     actionmailer (4.0.0)
@@ -53,7 +53,7 @@ GIT
       thor (>= 0.18.1, < 2.0)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     activerecord-deprecated_finders (1.0.3)
     arel (4.0.0)
@@ -80,7 +80,7 @@ GEM
     email_validator (1.4.0)
       activemodel
     erubis (2.7.0)
-    execjs (2.0.1)
+    execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
@@ -106,7 +106,7 @@ GEM
       tilt
     mime-types (1.25)
     minitest (4.7.5)
-    multi_json (1.8.0)
+    multi_json (1.8.1)
     multipart-post (1.2.0)
     neat (1.4.0)
       bourbon (>= 2.1)
@@ -126,7 +126,7 @@ GEM
     rake (10.1.0)
     recipient_interceptor (0.1.2)
       mail
-    sass (3.2.10)
+    sass (3.2.12)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
