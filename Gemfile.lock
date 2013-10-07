@@ -53,7 +53,7 @@ GIT
       thor (>= 0.18.1, < 2.0)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activerecord-deprecated_finders (1.0.3)
     arel (4.0.0)
