@@ -47,34 +47,39 @@
       <%= yield %>
     </article>
     <footer role="contentinfo">
-      <div class="wrapper">
-        <nav id="bottom-menu" class="menu widget">        
-          <h3>Atypical Type</h3>
-    	    <ul>
-            <% if signed_in? %>
-              <li class="user-menu-account"><%= link_to "Your Profile", edit_user_path %></li>
-              <li><%= link_to "Sign out", sign_out_path %></li>
-            <% else %>
-              <li><%= link_to "Sign In", sign_in_path %></li>
-            <% end %>
-            <li><%= link_to "Terms & Conditions", terms_path %></li>
-            <li><%= link_to "Privacy Policy", privacy_path %></li>
-          </ul>
-        </nav>
-        <nav class="menu widget">
-		      <h3>Keep in touch for news and offers</h3>
-          <ul>
-            <li><a href="http://twitter.com/atypicaltype">twitter / @atypicaltype</a></li>
-            <li><a href="http://instagram.com/atypicaltype">instagram / @atypicaltype</a></li>
-            <li><a href="http://pinterest.com/atypicaltype">pinterest / @atypicaltype</a></li>
-          </ul>
-        </nav>
-        <section class="copyright widget">
-          <h3>Atypical Type has been created with <span class="love">&hearts;</span> by:</h3>
-          <p><%= link_to image_tag("gurkie.png"), "http://elbongurk.com" %></p>
-          <p>Proudly imagined, developed, printed and assembled in the USA.</p>
-        </section>
-      </div>
+      <section class="copyright widget widget-desktop">
+        <h3>Atypical Type has been created with <span class="love">&hearts;</span> by:</h3>
+        <p><%= link_to image_tag("gurkie.png"), "http://elbongurk.com" %></p>
+        <p>Proudly imagined, developed, printed and assembled in the USA.</p>
+      </section>
+      <nav id="bottom-menu" class="menu menu-nav widget">        
+        <h3>Atypical Type</h3>
+  	    <ul>
+          <% if signed_in? %>
+            <li class="user-menu-account"><%= link_to "Your Profile", edit_user_path %></li>
+            <li><%= link_to "Sign out", sign_out_path %></li>
+          <% else %>
+            <li><%= link_to "Sign In", sign_in_path %></li>
+          <% end %>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Contact", contact_path %></li>
+          <li><%= link_to "Terms & Conditions", terms_path %></li>
+          <li><%= link_to "Privacy Policy", privacy_path %></li>
+        </ul>
+      </nav>
+      <nav class="menu menu-social widget">
+	      <h3>Keep in touch for news and offers</h3>
+        <ul>
+          <li><a href="http://twitter.com/atypicaltype"><i class="icon-twitter"></i> / atypicaltype</li>
+          <li><a href="http://instagram.com/atypicaltype"><i class="icon-facebook"></i> / atypicaltype</a></li>
+          <li><a href="http://instagram.com/atypicaltype"><i class="icon-google-plus"></i> / atypicaltype</a></li>
+        </ul>
+      </nav>
+      <section class="copyright widget widget-mobile">
+        <h3>Atypical Type has been created with <span class="love">&hearts;</span> by:</h3>
+        <p><%= link_to image_tag("gurkie.png"), "http://elbongurk.com" %></p>
+        <p>Proudly imagined, developed, printed and assembled in the USA.</p>
+      </section>
       <div class="notices">
         <p>This product uses the Instagram API but is not endorsed or certified by Instagram.</p>
       </div>

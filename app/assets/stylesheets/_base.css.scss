@@ -282,8 +282,15 @@ footer[role=contentinfo] {
     @include media($desktop) {
       @include span-columns(4 of 12);
     }
+  }
+  .widget-mobile {
     @include media($tablet-up) {
-      padding: 40px 50px 20px;
+      display: none;
+    }
+  }
+  .widget-desktop {
+    @include media($mobile) {
+      display: none;
     }
   }
   .copyright {
@@ -293,13 +300,22 @@ footer[role=contentinfo] {
       font-size: 0.7em;
       line-height: 1.5;
     }
+    p:last-child {
+      margin-bottom: 0px;
+    }
     .love {
       color: #EE257B;
+    }
+    @include media($tablet-up) {
+      height: 190px;
     }
   }
   .menu {
     li {
       margin: 2px 10px;
+      @include media($tablet-up) {
+        margin-left: 0;
+      }
     }
     a {
       text-decoration: none;
@@ -314,7 +330,18 @@ footer[role=contentinfo] {
       }
     }
     @include media($tablet-up) {
-      text-align: left;
+      text-align: left;      
+    }
+  }
+  .menu-nav {
+    @include media($tablet-up) {
+      padding-left: 5%;
+    }
+  }
+  .menu-social {
+    @include media($tablet-up) {
+      padding-left: 0;
+      @include omega;
     }
   }
   .notices {
