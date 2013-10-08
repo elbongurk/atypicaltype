@@ -1,0 +1,15 @@
+<h2>Want to Contact Us?</h2>
+<%= form_for @feedback, builder: FormBuilder do |form| %>
+  <%= form.errors %>
+  <%= form.fieldset_for :email do |email| %>
+    <%= email.label %>
+    <%= email.email_field %>
+  <% end %>
+  <%= form.fieldset_for :message do |message| %>
+    <%= message.label %>
+    <%= message.text_area %>
+  <% end %>
+  <div class="buttons">
+    <%= form.submit "Contact Us", class: "button" %>
+  </div>
+<% end %>
