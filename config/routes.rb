@@ -4,7 +4,7 @@ AtypicalType::Application.routes.draw do
   get 'sign_out', to: 'o_auth#disconnect'
 
   resources :photos, only: [:index, :show] do
-    resources :product_types, only: [:show]
+    resources :product_variants, only: [:show]
     resources :products, only: [:show]
   end
 
