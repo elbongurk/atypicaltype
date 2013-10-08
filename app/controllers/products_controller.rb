@@ -1,9 +1,19 @@
 class ProductsController < ApplicationController
-  respond_to :png, :pdf
+  before_filter :authorize
+
+  def index
+    photo = Photo.find(params[:photo_id])
+    product = Product.first
+
+    #TODO: This will one day show a page to select a product (Poster, Canvas, Framed Poster, etc)
+    
+    redirect_to photo_product_url(photo, product)
+  end
 
   def show
-    @line_item = LineItem.new(photo_id: params[:photo_id], product_id: params[:id])
+    @photo = Photo.find(params[:photo_id])
+    @product = Product.find(params[:id])
 
-    respond_with(@line_item)
+    @variant = @product.variants.first
   end
 end

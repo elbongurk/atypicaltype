@@ -1,7 +1,7 @@
-<div class="scene scene-1" data-photo-url="<%= preview_new_line_item_url(@line_item.as_params(:png)) %>">
+<div class="scene scene-1" data-photo-url="<%= photo_variant_url(@line_item.photo, @line_item.variant, format: :png) %>">
   <div class="panels">
     <% %w(front top bottom left right).each do |side| %>
-      <div style="background-image: url(<%= preview_new_line_item_url(@line_item.as_params(:png)) %>);" class="panel panel-<%= side %>"></div>
+      <div style="background-image: url(<%= photo_variant_url(@line_item.photo, @line_item.variant, format: :png) %>);" class="panel panel-<%= side %>"></div>
     <% end %>
   </div>
   <div class="floor"></div>
@@ -58,12 +58,10 @@
     <li>Matte finish coating</li>
   </ul>
   <%= form_for @line_item do |form| %>
-    <%= form.hidden_field :brightness %> 
-    <%= form.hidden_field :contrast %>    
     <%= form.hidden_field :photo_id %>    
-    <%= form.hidden_field :product_id %>
+    <%= form.hidden_field :variant_id %>
     <div class="buttons">
-      <%= form.submit "Add to cart - #{number_to_currency(@line_item.product.price)}", class: "button-small button" %>
+      <%= form.submit "Add to cart - #{number_to_currency(@line_item.variant.price)}", class: "button-small button" %>
     </div>
   <% end %>
 </div>

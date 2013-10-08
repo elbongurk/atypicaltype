@@ -3,9 +3,9 @@ AtypicalType::Application.routes.draw do
   get 'sign_in', to: 'o_auth#connect'
   get 'sign_out', to: 'o_auth#disconnect'
 
-  resources :photos, only: [:index, :show] do
-    resources :product_variants, only: [:show]
-    resources :products, only: [:show]
+  resources :photos, only: [:index] do
+    resources :variants, only: [:show]
+    resources :products, only: [:show, :index]
   end
 
   resource :cart, only: [:show]
@@ -17,11 +17,12 @@ AtypicalType::Application.routes.draw do
     get 'purchase', on: :member
     get 'confirm', on: :member
   end
+  
+  resources :feedbacks, only: [:new, :create]
 
   get 'privacy', to: 'pages#privacy'
   get 'terms', to: 'pages#terms'
   get 'about', to: 'pages#about'
-  get 'contact', to: 'pages#contact'
 
   root to: 'pages#welcome'
 

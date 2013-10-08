@@ -1,7 +1,7 @@
 <tr>
-  <td class="preview"><%= image_tag line_item_path(line_item, format: :png) %></td>
-  <td class="description"><%= line_item.product.description %> - <%= line_item.product.size %></td>
-  <td class="price"><%= number_to_currency(line_item.product.price) %></td>
+  <td class="preview"><%= image_tag photo_variant_url(line_item.photo, line_item.variant, format: :png) %></td>
+  <td class="description"><%= line_item.variant.product.description %> - <%= line_item.variant.size %></td>
+  <td class="price"><%= number_to_currency(line_item.variant.price) %></td>
   <td class="quantity">
     <%= form_for line_item do |form| %>
       <%= form.select :quantity, (1..20) %>

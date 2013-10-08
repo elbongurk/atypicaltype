@@ -2,10 +2,11 @@ class LineItemsController < ApplicationController
   before_filter :authorize
 
   def create
-    line_item = current_user.cart.line_items.where(create_params).first_or_initialize
-
-    line_item.quantity += 1 unless line_item.new_record?
-
+    line_item = current_user.cart.line_items.new
+    
+    line_item.variant = Variant.where(sku: params[:line_item][:variant_id]).first
+    line_item.photo = Photo.find(params[:line_item][:photo_id])
+    
     line_item.save
 
     redirect_to cart_url
@@ -34,6 +35,6 @@ class LineItemsController < ApplicationController
   end
 
   def create_params
-    params.require(:line_item).permit(:product_id, :photo_id, :contrast, :brightness)
+    params.require(:line_item).permit(:photo_id)
   end
 end

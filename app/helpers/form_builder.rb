@@ -38,6 +38,10 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     super(method, with_options(method, options))
   end
 
+  def text_area(method = @method, options = {})
+    super(method, with_options(method, options))
+  end
+    
   def select_field(choices, options = {}, html_options = {})
     select(@method, choices, options = {}, html_options = {})
   end
@@ -45,7 +49,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   def select(method, choices, options = {}, html_options = {})
     super(method, choices, options, with_options(method, options))
   end
-
+  
   protected
 
   def has_errors(method)
