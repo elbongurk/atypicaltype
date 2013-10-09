@@ -19,8 +19,16 @@ class Variant < ActiveRecord::Base
     self.sku[6..7].to_i
   end
   
-  def actionImage(number)
-    "#{self.sku[0..3].downcase}-#{number}.jpg"
+  def actionImagePart
+    self.sku[0..3].downcase
+  end
+  
+  def actionImageFull(number)
+    "#{self.actionImagePart}-f#{number}.jpg"
+  end
+
+  def actionImageThumb(number)
+    "#{self.actionImagePart}-t#{number}.jpg"
   end
 
   def name
