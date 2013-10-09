@@ -1,10 +1,6 @@
 <div class="scene scene-1" data-photo-url="<%= photo_variant_url(@photo, @variant, format: :png) %>">
-  <div class="panels">
-    <% %w(front top bottom left right).each do |side| %>
-      <div style="background-image: url(<%= photo_variant_url(@photo, @variant, format: :png) %>);" class="panel panel-<%= side %>"></div>
-    <% end %>
-  </div>
-  <div class="floor"></div>
+  <%= image_tag @variant.actionImage(1), class: "actionImage" %>
+  <%= image_tag photo_variant_url(@photo, @variant, format: :png), class: "productImage" %>
   <div class="toolbar">
     <fieldset>
       <input type="radio" name="contrast" value="0" checked>

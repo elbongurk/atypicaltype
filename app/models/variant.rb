@@ -3,6 +3,10 @@ class Variant < ActiveRecord::Base
   belongs_to :product
   default_scope { where active: true }
 
+  def self.from_param(param)
+    where(sku: param).first
+  end
+
   def to_param
     self.sku
   end
@@ -13,6 +17,10 @@ class Variant < ActiveRecord::Base
   
   def brightness
     self.sku[6..7].to_i
+  end
+  
+  def actionImage(number)
+    "#{self.sku[0..3].downcase}-#{number}.jpg"
   end
 
   def name
