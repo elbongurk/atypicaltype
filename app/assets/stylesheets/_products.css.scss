@@ -76,8 +76,8 @@
   }
   
   .toolbar {
-    margin-left: 12.5%;
-    width: 75%;
+    margin-left: 5%;
+    width: 90%;
     li {
       display: inline-block;
       width: 15%;
@@ -114,15 +114,16 @@
   
   .productImage {
     position: absolute;
-    max-width: inherit;    
+    max-width: inherit;
   }
   
   .productImage-ccxc-1 {
-    top: 18%;
-    left: 31%;
-    width: 40%;
+    top: 24%;
+    left: 37.5%;
+    width: 31%;
+    @include transform(rotate(-2deg));
   }
-  
+
   .productImage-ccxc-2 {
     top: 38%;
     left: -30%;
@@ -130,8 +131,8 @@
   }
   
   .productImage-ccxc-3 {
-    top: 26.5%;
-    left: -118.5%;
+    top: 27%;
+    left: -117.5%;
     width: 200%;
   }
   
@@ -140,7 +141,19 @@
     left: 14.5%;
     width: 55%;
   }
-
+  
+  .productImage-ccxc-5 {
+    top: 30%;
+    left: 44%;
+    width: 20.5%;
+  }
+  
+  .productImage-ccxc-6 {
+    top: 18%;
+    left: 31%;
+    width: 40.5%;
+  }
+  
   .product {
     @include media($tablet) {
       @include span-columns(2 of 6);
