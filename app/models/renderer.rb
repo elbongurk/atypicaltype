@@ -2,18 +2,20 @@ class Renderer
   attr_reader :url, :width, :height
   attr_accessor :type, :size, :brightness, :contrast
 
-  def initialize(url, width, height, options = {})
+  def initialize(type, size, url, width, height, options = {})
+    @type = type
+    @size = size
     @url = url
     @width = width
     @height = height
 
-    defaults = { type: :pdf, size: 1080, brightness: 0, contrast: 0 }
+    defaults = { brightness: 0, contrast: 0 }
 
     defaults.merge(options).each do |name, value|
       send("#{name}=", value)
     end
   end
-
+  
   def each
     context = AAlib::Context.new(self.width, self.height)
 
@@ -113,7 +115,7 @@ class Renderer
            when :pdf
              "-sDEVICE=pdfwrite -dSubsetFonts=true "
            when :png
-             "-sDEVICE=pnggray "#-dTextAlphaBits=2 -dDownScaleFactor=2 -r144 "
+             "-sDEVICE=pngalpha "#-dTextAlphaBits=2 -dDownScaleFactor=2 -r144 "
            end
     cmd << "-sOutputFile=- -"
   end
