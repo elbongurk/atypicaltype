@@ -19,8 +19,8 @@ class @Previewer
 
     actionImageFull = @root.querySelector(".actionImageFull")
     
-    currentSlug = "-f#{currentIndex}.jpg"
-    nextSlug = "-f#{nextIndex}.jpg"
+    currentSlug = "-f#{currentIndex}"
+    nextSlug = "-f#{nextIndex}"
     
     actionImageFull.src = actionImageFull.src.replace(currentSlug, nextSlug)
     
