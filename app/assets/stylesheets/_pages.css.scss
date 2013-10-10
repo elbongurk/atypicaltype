@@ -127,6 +127,41 @@
   }
 }
 
+#pages.privacy, #pages.terms {
+  h2 {
+    text-align: left;
+    padding: 0;
+    margin-bottom: 10px;
+    font-size: 2em;
+    font-weight: 600;
+  }
+  h3 {
+    font-family: "Landmark Regular";
+    font-weight: 400;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    margin-top: 25px;
+  }
+  p, ul, .legal-timestamp {
+    font-size: 0.75em;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  li {
+    margin-left: 15px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    margin-bottom: 10px;
+  }    
+  .legal-timestamp {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }    
+  padding: 0 5%;  
+}
+
 #pages.about {
   figure {
     margin-bottom: 35px;
