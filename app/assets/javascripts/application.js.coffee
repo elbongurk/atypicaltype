@@ -1,6 +1,6 @@
 //= require_tree .
 
 document.addEventListener "DOMContentLoaded", ->
-  Scene.load()
+  Previewer.load()
   Cart.load()
   SlideShow.load()

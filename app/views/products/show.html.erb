@@ -1,32 +1,16 @@
-<div class="scene scene-1" data-photo-url="<%= photo_variant_url(@photo, @variant, format: :png) %>">
-  <div class="panels">
-    <% %w(front top bottom left right).each do |side| %>
-      <div style="background-image: url(<%= photo_variant_url(@photo, @variant, format: :png) %>);" class="panel panel-<%= side %>"></div>
-    <% end %>
+<div class="previewer" data-photo-url="<%= photo_variant_url(@photo, @variant, format: :png) %>">
+  <div class="scene">
+    <%= image_tag @variant.actionImageFull(1), class: "actionImageFull" %>
+    <%= image_tag photo_variant_url(@photo, @variant, format: :png), class: "productImage productImage-#{@variant.actionImagePart}-1" %>
   </div>
-  <div class="floor"></div>
-  <div class="toolbar">
-    <fieldset>
-      <input type="radio" name="contrast" value="0" checked>
-      <input type="radio" name="contrast" value="25">
-      <input type="radio" name="contrast" value="50">
-      <input type="radio" name="contrast" value="75">
-      <label>Contrast</label>
-    </fieldset>
-    <fieldset>
-      <input type="radio" name="scene" id="scene-1" value="1" checked>
-      <input type="radio" name="scene" id="scene-2" value="2">
-      <input type="radio" name="scene" id="scene-3" value="3">
-      <label>View</label>
-    </fieldset>
-    <fieldset>
-      <input type="radio" name="brightness" value="0" checked>
-      <input type="radio" name="brightness" value="25">
-      <input type="radio" name="brightness" value="50">
-      <input type="radio" name="brightness" value="75">
-      <label>Brightness</label>
-    </fieldset>
-  </div>
+  <ul class="toolbar">
+    <li><%= image_tag @variant.actionImageThumb(1), data: { index: 1 }, class: "actionImageThumb actionImageThumb-selected" %></li>
+    <li><%= image_tag @variant.actionImageThumb(2), data: { index: 2 }, class: "actionImageThumb" %></li>
+    <li><%= image_tag @variant.actionImageThumb(3), data: { index: 3 }, class: "actionImageThumb" %></li>
+    <li><%= image_tag @variant.actionImageThumb(4), data: { index: 4 }, class: "actionImageThumb" %></li>
+    <li><%= image_tag @variant.actionImageThumb(5), data: { index: 5 }, class: "actionImageThumb" %></li>
+    <li><%= image_tag @variant.actionImageThumb(6), data: { index: 6 }, class: "actionImageThumb" %></li>
+  </ul>
   <div class="navbar">
     <a href="<%= photos_path %>" class="photo-back">
       <%= image_tag "angle_bracket.png" %>
