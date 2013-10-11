@@ -13,18 +13,14 @@ class @Previewer
 
     current.classList.remove("actionImageThumb-selected")
     next.classList.add("actionImageThumb-selected")
-    
-    currentIndex = current.getAttribute('data-index')
-    nextIndex = next.getAttribute('data-index')
+
+    currentProduct = current.getAttribute('data-product')
+    nextProduct = next.getAttribute('data-product')    
 
     actionImageFull = @root.querySelector(".actionImageFull")
-    
-    currentSlug = "-f#{currentIndex}"
-    nextSlug = "-f#{nextIndex}"
-    
-    actionImageFull.src = actionImageFull.src.replace(currentSlug, nextSlug)
+    actionImageFull.src = next.getAttribute('data-action')
     
     productImage = @root.querySelector(".productImage")
     
-    productImage.className = productImage.className.replace("-#{currentIndex}", "-#{nextIndex}")    
+    productImage.className = productImage.className.replace(currentProduct, nextProduct)    
     
