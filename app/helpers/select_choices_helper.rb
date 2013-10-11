@@ -1,12 +1,4 @@
 module SelectChoicesHelper
-  def contrast_levels
-    (0..75).step(25).to_a
-  end
-
-  def brightness_levels
-    (0..75).step(25).to_a
-  end
-
   def cc_months
     (1..12).map { |m| ["#{m} - #{Date::MONTHNAMES[m]}", m] }
   end
