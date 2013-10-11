@@ -33,7 +33,7 @@ class Renderer
     # TODO: We could possibly store the pixel values from stream into memcached
     #       We would need to test obviously how fast that is vs just using stream
 
-    context.render(bright: self.brightness, contrast: self.contrast)
+    context.render(bright: 30, contrast: 30)
 
     ird, iwr = IO.pipe
     ord, owr = IO.pipe
@@ -74,6 +74,10 @@ class Renderer
     iwr.write("/JNMono-Bold findfont #{font_size} scalefont setfont #{136/255.0} setgray ")
     iwr.write(boldfonts)
 
+    if self.type == :png
+      iwr.write("200 200 translate ")
+    end
+
     iwr.write("showpage %%EOF")
     iwr.close
 
@@ -88,8 +92,21 @@ class Renderer
     Process.waitpid(pid)
   end
 
-  private
+  def png?
+    self.type == :png
+  end
+  
+  def pdf?
+    self.type == :pdf
+  end
+  
+  def rsize
+    # We subtract 72dpi * 3" on png's because we only show the front
+    self.png? ? self.size - 216 : self.size
+  end
 
+  private
+  
   def char_ps(x, y, context, density)
     ascii = context.getpixel(x, y)
     
@@ -97,20 +114,27 @@ class Renderer
     return "" if ascii == 32
 
     chr = sprintf("%03o", ascii)
+    
     rx = density * x
     ry = self.size - density * (y + 1)
+    
+    if self.png?
+      rx-=108
+      ry-=108
+    end
 
     "#{rx} #{ry} moveto (\\#{chr}) show "    
   end
 
   def stream_cmd
+    "convert #{self.url} -auto-level gram:- | stream gram:- -map i -storage-type char -"
     "stream -map i -storage-type char #{self.url} -"
   end
 
   def gs_cmd
     cmd = "gs -q -dBATCH -dNOPAUSE -I#{Rails.root.join('fonts')} "
-    cmd << "-dDEVICEWIDTHPOINTS=#{self.size} "
-    cmd << "-dDEVICEHEIGHTPOINTS=#{self.size} "
+    cmd << "-dDEVICEWIDTHPOINTS=#{self.rsize} "
+    cmd << "-dDEVICEHEIGHTPOINTS=#{self.rsize} "
     cmd << case self.type
            when :pdf
              "-sDEVICE=pdfwrite -dSubsetFonts=true "
