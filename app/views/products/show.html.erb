@@ -1,15 +1,17 @@
-<div class="previewer" data-photo-url="<%= photo_variant_url(@photo, @variant, format: :png) %>">
+<div class="previewer">
   <div class="scene">
     <%= image_tag @variant.actionImageFull(1), class: "actionImageFull" %>
     <%= image_tag photo_variant_url(@photo, @variant, format: :png), class: "productImage productImage-#{@variant.actionImagePart}-1" %>
   </div>
   <ul class="toolbar">
-    <li><%= image_tag @variant.actionImageThumb(1), data: { index: 1 }, class: "actionImageThumb actionImageThumb-selected" %></li>
-    <li><%= image_tag @variant.actionImageThumb(2), data: { index: 2 }, class: "actionImageThumb" %></li>
-    <li><%= image_tag @variant.actionImageThumb(3), data: { index: 3 }, class: "actionImageThumb" %></li>
-    <li><%= image_tag @variant.actionImageThumb(4), data: { index: 4 }, class: "actionImageThumb" %></li>
-    <li><%= image_tag @variant.actionImageThumb(5), data: { index: 5 }, class: "actionImageThumb" %></li>
-    <li><%= image_tag @variant.actionImageThumb(6), data: { index: 6 }, class: "actionImageThumb" %></li>
+    <% (1..6).each do |thumb| %>
+      <li>
+        <img src="<%= image_path(@variant.actionImageThumb(thumb)) %>"
+             data-product="productImage-<%= @variant.actionImagePart %>-<%= thumb %>"
+             data-action="<%= image_path(@variant.actionImageFull(thumb)) %>"
+             class="actionImageThumb<%= ' actionImageThumb-selected' if thumb == 1 %>">
+      </li>
+    <% end %>
   </ul>
   <div class="navbar">
     <a href="<%= photos_path %>" class="photo-back">
