@@ -6,7 +6,7 @@
   <%= form.fields_for :credit_card do |card| %>
     <%= card.fieldset_for :number do |number| %>
       <%= number.label "Card number" %>
-      <%= number.text_field %>
+      <%= number.text_field :number, pattern: "[0-9]*" %>
     <% end %>
     <%= card.fieldset_for :expiration_date do |expiration_date| %>
       <%= expiration_date.label "Expires on" %>
@@ -17,7 +17,7 @@
   <%= form.fields_for :billing do |billing| %>
     <%= billing.fieldset_for :postal_code do |postal_code| %>
       <%= postal_code.label "Billing Zip" %>
-      <%= postal_code.text_field %>
+      <%= postal_code.text_field :postal_code, pattern: "[0-9]*" %>
     <% end %>
   <% end %>
   <%= form.tr_data confirm_order_url(@order), amount: @order.total %>

@@ -23,3 +23,7 @@ body {
   font-family: "Gotham Light";
 }
 
+button, input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}  
