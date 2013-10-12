@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :authorize
+  before_filter :validate_cart, except: [:index, :show]
 
   def index
     @orders = current_user.orders
@@ -45,7 +46,13 @@ class OrdersController < ApplicationController
   end
 
   private
-
+  
+  def validate_cart
+    if signed_in? && current_user.cart.line_items.count == 0
+      return redirect_to cart_url
+    end
+  end
+  
   def create_params
     params
       .require(:order)
