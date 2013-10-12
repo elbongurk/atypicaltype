@@ -8,9 +8,11 @@ class OAuthController < ApplicationController
     redirect_to Instagram.authorize_url(:redirect_uri => oauth_callback_url)
   end
 
-  
-  # TODO: Handle the case where the user denies access
   def callback
+    if params[:error].present?
+      return redirect_to root_url
+    end
+  
     rsp = Instagram.get_access_token(params[:code], :redirect_uri => oauth_callback_url)
 
     user = User.where(oauth_id: rsp.user.id).first_or_initialize.tap do |u|
