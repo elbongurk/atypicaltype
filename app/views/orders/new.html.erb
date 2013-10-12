@@ -10,11 +10,11 @@
     <%= email.email_field %>
   <% end %>
   <%= form.fieldset_for :address1 do |address| %>
-    <%= address.label "Address 1" %>
+    <%= address.label :address1, "Address 1" %>
     <%= address.text_field %>  
   <% end %>
   <%= form.fieldset_for :address2 do |address| %>
-    <%= address.label "Address 2" %>
+    <%= address.label :address2, "Address 2" %>
     <%= address.text_field %>  
   <% end %>
   <%= form.fieldset_for :city do |city| %>
@@ -26,8 +26,8 @@
     <%= state.select_field us_states %>  
   <% end %>
   <%= form.fieldset_for :postal_code do |postal_code| %>
-    <%= postal_code.label "Zip code" %>
-    <%= postal_code.text_field %>  
+    <%= postal_code.label :postal_code, "Zip code" %>
+    <%= postal_code.text_field :postal_code, pattern: "[0-9]*" %>  
   <% end %>
   <div class="buttons">
     <%= form.submit "Continue Order", class: "button" %>

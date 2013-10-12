@@ -4,7 +4,7 @@ class LineItemsController < ApplicationController
   def create
     line_item = current_user.cart.line_items.new
     
-    line_item.variant = Variant.from_param([:line_item][:variant_id])
+    line_item.variant = Variant.from_param(params[:line_item][:variant_id])
     line_item.photo = Photo.find(params[:line_item][:photo_id])
     
     line_item.save

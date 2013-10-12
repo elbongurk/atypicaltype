@@ -363,6 +363,12 @@ footer[role=contentinfo] {
       display: none;
     }
   }
+
+  .home-menu {
+    @include media($tablet-up) {
+      display: none;
+    }
+  }
 }
 
 

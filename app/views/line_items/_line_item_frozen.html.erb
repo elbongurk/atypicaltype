@@ -1,7 +1,7 @@
 <tr>
-  <td class="preview"><%= image_tag line_item_path(line_item_frozen, format: :png) %></td>
-  <td class="description"><%= line_item_frozen.product.description %> - <%= line_item_frozen.product.size %></td>
-  <td class="price"><%= number_to_currency(line_item_frozen.product.price) %></td>
+  <td class="preview"><%= image_tag photo_variant_path(line_item_frozen.photo, line_item_frozen.variant, format: :png) %></td>
+  <td class="description"><%= line_item_frozen.variant.product.description %> - <%= line_item_frozen.variant.name %></td>
+  <td class="price"><%= number_to_currency(line_item_frozen.variant.price) %></td>
   <td class="quantity"><%= line_item_frozen.quantity %></td>
   <td class="total"><%= number_to_currency(line_item_frozen.total) %></td>
 </tr>
