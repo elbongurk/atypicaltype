@@ -1,6 +1,10 @@
 <h2>Want to Contact Us?</h2>
 <%= form_for @feedback, builder: FormBuilder do |form| %>
   <%= form.errors %>
+  <%= form.fieldset_for :name do |name| %>
+    <%= name.label %>
+    <%= name.text_field %>
+  <% end %>
   <%= form.fieldset_for :email do |email| %>
     <%= email.label %>
     <%= email.email_field %>

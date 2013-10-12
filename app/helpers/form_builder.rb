@@ -19,7 +19,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def label(method = @method, label = nil, options = {})
-    super(method, label, with_options(method, options))
+    super(method, label, with_label_options(method, options))
   end
 
   def text_field(method = @method, options = {})
@@ -76,6 +76,15 @@ class FormBuilder < ActionView::Helpers::FormBuilder
       content << @template.content_tag(:p, determine_error(key), class: "form-error")
     else
       content
+    end
+  end
+
+  def with_label_options(method, options)
+    key = @method || method
+    if has_errors(key)
+      options.merge(class: "error")
+    else
+      options
     end
   end
 
