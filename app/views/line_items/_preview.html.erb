@@ -1,15 +1,16 @@
 <div class="previewer">
   <div class="scene">
-    <%= image_tag preview.variant.actionImageFull(1), class: "actionImageFull" %>
-    <%= image_tag photo_variant_url(preview.photo, preview.variant, format: :png), class: "productImage productImage-#{preview.variant.actionImagePart}-1" %>
+    <img src="/<%= preview.variant.shotFull(1) %>" class="shotFull">
+    <img src="<%= photo_variant_path(preview.photo, preview.variant, format: :png) %>" 
+         class="productImage productImage-<%= preview.variant.shotPart %>-1">
   </div>
   <ul class="toolbar">
-    <% (1..6).each do |thumb| %>
+    <% (1..5).each do |thumb| %>
       <li>
-        <img src="<%= image_path(preview.variant.actionImageThumb(thumb)) %>"
-             data-product="productImage-<%= preview.variant.actionImagePart %>-<%= thumb %>"
-             data-action="<%= image_path(preview.variant.actionImageFull(thumb)) %>"
-             class="actionImageThumb<%= ' actionImageThumb-selected' if thumb == 1 %>">
+        <img src="/<%= preview.variant.shotThumb(thumb) %>"
+             data-product="productImage-<%= preview.variant.shotPart %>-<%= thumb %>"
+             data-shot="/<%= preview.variant.shotFull(thumb) %>"
+             class="shotThumb<%= ' shotThumb-selected' if thumb == 1 %>">
       </li>
     <% end %>
   </ul>
@@ -24,14 +25,14 @@
 <div class="product">
   <h2>Choose your canvas size:</h2>
   <div class="product-sizes">
-    <div class="product-size product-size-selected">
-      <div><%= preview.variant.name %></div>
-      <div><%= number_to_currency(preview.variant.price) %></div>
-    </div>
-    <div class="product-size product-size-disabled">
-      <div>16" x 16"</div>
-      <div>$79.00</div>
-    </div>
+    <% preview.variant.product.variants.each do |variant| %>
+      <div data-price="<%= number_to_currency(variant.price) %>" 
+           data-size="<%= variant.size_code %>" 
+           class="product-size<%= ' product-size-selected' if variant == preview.variant %>">
+        <div><%= variant.name %></div>
+        <div><%= number_to_currency(variant.price) %></div>
+      </div>
+    <% end %>
   </div>
   <p>* <em>The canvas measures 1.5" deep, so please keep in mind that 1.5" of your photo will wrap around each of the four sides.</em></p>
   <h2>Product Details</h2>
@@ -45,14 +46,15 @@
   </ul>
   <%= form_for preview do |form| %>
     <%= form.hidden_field :photo_id %>
-    <%= form.hidden_field :variant_id %>
+    <%= form.fields_for preview.variant do |variant| %>
+      <%= variant.hidden_field :sku %>
+    <% end %>
     <div class="buttons">
       <% if preview.new_record? %>
         <%= form.submit "Add to cart - #{number_to_currency(preview.variant.price)}", class: "button-small button" %>
       <% else %>
         <%= form.submit "Update cart - #{number_to_currency(preview.variant.price)}", class: "button-small button" %>
       <% end %>
-      
     </div>
   <% end %>
 </div>

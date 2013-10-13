@@ -10,30 +10,26 @@ class Variant < ActiveRecord::Base
   def to_param
     self.sku
   end
-
-  def contrast
-    self.sku[4..5].to_i  
-  end
   
-  def brightness
-    self.sku[6..7].to_i
-  end
-  
-  def actionImagePart
-    self.sku[0..3].downcase
-  end
-  
-  def actionImageFull(number)
-    "#{self.actionImagePart}-f#{number}.jpg"
+  def size_code
+    self.sku[1..6].downcase
   end
 
-  def actionImageThumb(number)
-    "#{self.actionImagePart}-t#{number}.jpg"
+  def shotPart
+    self.sku[0..6].downcase
+  end
+  
+  def shotFull(number)
+    "#{self.shotPart}-f#{number}.jpg"
+  end
+
+  def shotThumb(number)
+    "#{self.shotPart}-t#{number}.jpg"
   end
 
   def name
-    width = self.sku[1].to_i(16)
-    height = self.sku[3].to_i(16)
-    "#{width} \" X #{height}\""
+    width = self.sku[1..2]
+    height = self.sku[4..6]
+    "#{width}\" X #{height}\""
   end
 end
