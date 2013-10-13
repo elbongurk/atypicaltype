@@ -18,7 +18,6 @@ class LineItem < ActiveRecord::Base
   private
 
   def renderer(type)
-    options = { brightness: variant.brightness, contrast: variant.contrast }
-    Renderer.new(type, variant.size, photo.url, photo.width, photo.height, options)
+    Renderer.new(type, variant.size, photo.url, photo.width, photo.height)
   end
 end

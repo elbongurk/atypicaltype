@@ -1,19 +1,13 @@
 class Renderer
   attr_reader :url, :width, :height
-  attr_accessor :type, :size, :brightness, :contrast
+  attr_accessor :type, :size
 
-  def initialize(type, size, url, width, height, options = {})
+  def initialize(type, size, url, width, height)
     @type = type
     @size = size
     @url = url
     @width = width
     @height = height
-
-    defaults = { brightness: 0, contrast: 0 }
-
-    defaults.merge(options).each do |name, value|
-      send("#{name}=", value)
-    end
   end
   
   def each
@@ -41,7 +35,7 @@ class Renderer
     ird.close
     owr.close
 
-    iwr.write("/pagesize [#{self.size} #{self.size}] ")
+    iwr.write("/pagesize [#{self.rsize} #{self.rsize}] ")
 
     dims, bolds, boldfonts = "", "", ""
 
