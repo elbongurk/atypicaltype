@@ -1,13 +1,12 @@
 class LineItemsController < ApplicationController
   before_filter :authorize
 
+  def show
+    @line_item = current_user.cart.line_items.find(params[:id])
+  end
+
   def create
-    line_item = current_user.cart.line_items.new
-    
-    line_item.variant = Variant.from_param(params[:line_item][:variant_id])
-    line_item.photo = Photo.find(params[:line_item][:photo_id])
-    
-    line_item.save
+    current_user.cart.line_items.create(create_params)
 
     redirect_to cart_url
   end
@@ -31,10 +30,10 @@ class LineItemsController < ApplicationController
   private
 
   def update_params
-    params.require(:line_item).permit(:quantity)
+    params.require(:line_item).permit(:quantity, :variant_id)
   end
 
   def create_params
-    params.require(:line_item).permit(:photo_id)
+    params.require(:line_item).permit(:photo_id, :variant_id)
   end
 end
