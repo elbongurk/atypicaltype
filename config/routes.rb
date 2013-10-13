@@ -11,7 +11,7 @@ AtypicalType::Application.routes.draw do
   resource :cart, only: [:show]
   resource :user, only: [:edit, :update]
 
-  resources :line_items, only: [:create, :update, :destroy]
+  resources :line_items, only: [:create, :update, :destroy, :show]
 
   resources :orders, only: [:new, :create, :index, :show] do
     get 'purchase', on: :member

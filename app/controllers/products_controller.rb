@@ -11,9 +11,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:photo_id])
-    @product = Product.find(params[:id])
-
-    @variant = @product.variants.first
+    @line_item = LineItem.new
+    
+    @line_item.photo = Photo.find(params[:photo_id])
+    @line_item.variant = Variant.where(product_id: params[:id]).first
   end
 end
