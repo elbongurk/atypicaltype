@@ -1,6 +1,10 @@
 
 
 #photos.index {
+  ul {
+    @include clearfix;
+  }
+
   li {
     list-style: none;
 

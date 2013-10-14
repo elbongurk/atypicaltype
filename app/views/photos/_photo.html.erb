@@ -1,1 +1,3 @@
-<li><%= link_to image_tag(photo.url), photo_products_path(photo) %></li>
+<li data-created-time="<%= photo.created_time %>">
+  <%= link_to image_tag(photo.url), photo_products_path(photo) %>
+</li>
