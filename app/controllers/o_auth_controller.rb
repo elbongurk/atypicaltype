@@ -7,7 +7,22 @@ class OAuthController < ApplicationController
   def connect 
     redirect_to Instagram.authorize_url(:redirect_uri => oauth_callback_url)
   end
-
+  
+  # http://instagram.com/developer/realtime/#create-a-subscription
+  def subscribe
+    render text: params['hub.challenge']
+  end
+  
+  # http://instagram.com/developer/realtime/#user-subscriptions
+  def realtime
+    Instagram.process_subscription(request.raw_post, signature: request.headers['X-Hub-Signature']) do |handler|
+      handler.on_user_changed do |user_id, data|
+        user = User.where(oauth_id: user_id).first
+        Delayed::Job.enqueue UserOnboardJob.new(user.id, 'asc')
+      end
+    end
+  end
+  
   def callback
     if params[:error].present?
       return redirect_to root_url
