@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 885bc0beb235a7427eddf81ca9b70ff6eff869b8
+  revision: 0785008a64f4af8d09379683303d49d160cd444d
   branch: 4-0-stable
   specs:
     actionmailer (4.0.0)
@@ -113,7 +113,7 @@ GEM
       tilt
     mime-types (1.25)
     minitest (4.7.5)
-    multi_json (1.8.1)
+    multi_json (1.8.2)
     multipart-post (1.2.0)
     neat (1.4.0)
       bourbon (>= 2.1)
@@ -134,8 +134,8 @@ GEM
     recipient_interceptor (0.1.2)
       mail
     sass (3.2.12)
-    sass-rails (4.0.0)
-      railties (>= 4.0.0.beta, < 5.0)
+    sass-rails (4.0.1)
+      railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     sprockets (2.10.0)
