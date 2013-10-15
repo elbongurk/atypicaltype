@@ -9,14 +9,16 @@ class @Streamer
     this.fetchPhotos() if !@root.querySelector("li:last-child")
       
   loadMorePhotos: (event) =>
-    event.preventDefault() if event
+    event.preventDefault()
     @spinner.classList.remove("spinner-off")
     @spinner.classList.add("spinner-on")
-    this.fetchPhotos(@root.querySelector("li:last-child").getAttribute("data-created-time"))
+    setTimeout(this.fetchPhotos, 1000)
 
-  fetchPhotos: (since) =>
+  fetchPhotos: =>
     url = "/photos.json"
-    if since
+    last_photo = @root.querySelector("li:last-child")
+    if last_photo
+      since = last_photo.getAttribute("data-created-time")
       url += "?since=#{since}"
     Utils.ajax("GET", url, this.addPhotos)
   
