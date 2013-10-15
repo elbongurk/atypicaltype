@@ -1,8 +1,31 @@
 
 
 #photos.index {
+  .spinner {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .spinner-on img {
+    display: inline;
+  }
+  
+  .spinner-off img {
+    display: none;
+  }
+  
+  .spinner-on a {
+    display: none;
+  }
+  
+  .spinner-off a {
+    display: inline;
+  }
+
+  
   ul {
     @include clearfix;
+    margin-bottom: 40px;
   }
 
   li {
