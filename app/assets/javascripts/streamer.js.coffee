@@ -1,32 +1,38 @@
 class @Streamer
+  @MAX_PHOTOS: 12
+
   @load: ->
     for streamer in document.querySelectorAll(".streamer")
       new Streamer(streamer)
       
   constructor: (@root) ->
-    @last_photo = @root.querySelector("li:last-child")
-    if @last_photo
-      window.addEventListener("scroll", this.checkScroll)      
-    else
+    @polling = !@root.querySelector("li:last-child")
+    if @polling
       this.fetchPhotos()
+    else
+      window.addEventListener("scroll", this.checkScroll)      
       
   checkScroll: =>
     height_remaining = document.height - (document.body.scrollTop + window.innerHeight)
-    footer_height = window.innerWidth > 704 ? 224 : 726
+    footer_height = if window.innerWidth > 704 then 224 else 726
     if height_remaining < footer_height
-      this.fetchPhotos(@last_photo.getAttribute("data-created-time"))
-      window.removeEventListener("scroll", this.checkScroll)
+      window.removeEventListener("scroll", this.checkScroll)      
+      this.fetchPhotos(@root.querySelector("li:last-child").getAttribute("data-created-time"))
           
-  fetchPhotos: (since = 0) =>
-    Utils.ajax("GET", "/photos.json?since=#{since}", this.addPhotos)
+  fetchPhotos: (since) =>
+    url = "/photos.json"
+    if since
+      url += "?since=#{since}"
+    Utils.ajax("GET", url, this.addPhotos)
   
   addPhotos: (data) =>
-    if data.photos.length == 0
-      setTimeout(this.fetchPhotos, 1000)
-    else      
+    if data.photos.length > 0
       @root.insertAdjacentHTML('beforeend', JST["views/photos/index"](photos: data.photos))
+      @polling = false
 
-    if data.photos.length == 12
-      @last_photo = @root.querySelector("li:last-child")
-      window.addEventListener("scroll", this.checkScroll)                  
-      
+    if data.photos.length == MAX_PHOTOS
+      window.addEventListener("scroll", this.checkScroll)
+
+    if @polling
+      setTimeout(this.fetchPhotos, 1000)
+
