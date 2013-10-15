@@ -1,15 +1,28 @@
 class UserOnboardJob < Struct.new(:user_id)
-  # We need to continously do this
+  MAX_IMAGES = 20
+  
   def perform
     user = User.find(user_id)
+    options = { count: MAX_IMAGES }
 
-    Instagram.client(:access_token => user.oauth_token).user_recent_media.map do |media|
-      image = media.images.low_resolution
-      user.photos << Photo.new(url: image.url, width: image.width, height: image.height)
+    last_image = user.photos.order(:created_at).first
+
+    if last_image
+      options.merge!(max_timestamp: last_image.created_at.to_i)
     end
-    
-    user.save
 
-    # TOOD: need to check if we have to enqueue another of these
+    media = Instagram.client(:access_token => user.oauth_token).user_recent_media(options)
+    
+    media.each do |medium|
+      low = medium.images.low_resolution
+      created = Time.strptime(medium.created_time, '%s')
+      user.photos << Photo.new(url: low.url, width: low.width, height: low.height, created_at: created, updated_at: created)
+    end
+
+    user.save
+    
+    if media.size == MAX_IMAGES
+      Delayed::Job.enqueue self, run_at: Time.now + 1.second
+    end
   end
 end

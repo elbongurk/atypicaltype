@@ -1,0 +1,7 @@
+<% for photo in @photos: %>
+  <li data-created-time="<%= photo.created_time %>">
+    <a href="/photos/<%= photo.id %>/products">
+      <img src="<%= photo.url %>">
+    </a>
+  </li>
+<% end %>
