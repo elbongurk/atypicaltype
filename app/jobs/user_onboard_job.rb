@@ -1,14 +1,16 @@
-class UserOnboardJob < Struct.new(:user_id)
+class UserOnboardJob < Struct.new(:user_id, :order)
   MAX_IMAGES = 20
   
   def perform
     user = User.find(user_id)
+
     options = { count: MAX_IMAGES }
 
-    last_image = user.photos.order(:created_at).first
+    last_image = user.photos.order("created_at #{order}").last
 
     if last_image
-      options.merge!(max_timestamp: last_image.created_at.to_i)
+      key = order == "desc" ? "max_timestamp" : "min_timestamp"
+      options[key] = last_image.created_at.to_i
     end
 
     media = Instagram.client(:access_token => user.oauth_token).user_recent_media(options)
