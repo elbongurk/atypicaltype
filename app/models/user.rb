@@ -15,6 +15,6 @@ class User < ActiveRecord::Base
   private
 
   def onboard
-    Delayed::Job.enqueue UserOnboardJob.new(self.id)
+    Delayed::Job.enqueue UserOnboardJob.new(self.id, 'desc')
   end
 end
