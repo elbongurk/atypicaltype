@@ -1,4 +1,8 @@
 <h2>Choose an image to begin</h2>
-<ul>
+<ul class="streamer">
   <%= render @photos %>
 </ul>
+<p class="spinner spinner-<%= @photos.count > 0 ? "off" : "on" %>">
+  <%= image_tag "spinner.gif" %>
+  <a href="#" class="button">More Photos</a>
+</p>

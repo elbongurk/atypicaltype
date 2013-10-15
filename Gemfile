@@ -6,6 +6,7 @@ gem 'pg'
 gem 'unicorn'
 
 gem 'rails', github: 'rails/rails', branch: '4-0-stable'
+gem 'active_model_serializers'
 gem 'email_validator'
 gem 'recipient_interceptor'
 gem 'delayed_job_active_record'
@@ -14,9 +15,10 @@ gem 'mail_view'
 
 gem 'bourbon'
 gem 'neat'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
+gem 'eco'
 gem 'uglifier'
 
 gem 'aalib', github: 'elbongurk/aalib'

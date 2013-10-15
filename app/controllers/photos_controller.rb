@@ -1,18 +1,16 @@
 class PhotosController < ApplicationController
+  respond_to :html, :json
   before_filter :authorize
 
   def index
     @photos = current_user.photos
-  end
 
-  def show
-    redirect_to canvas_photo_url(params[:id])
-  end
-
-  def canvas
-    photo = current_user.photos.find(params[:id])
-    product = Product.canvases.first
-
-    @line_item = LineItem.new(photo_id: photo.id, product_id: product.id)
+    if params[:since]
+      @photos = @photos.where("created_at < ?", Time.at(params[:since].to_i))
+    end
+    
+    @photos = @photos.order('created_at desc').limit(12)
+    
+    respond_with(@photos)
   end
 end
