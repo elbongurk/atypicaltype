@@ -9,8 +9,11 @@ class UserOnboardJob < Struct.new(:user_id, :order)
     last_image = user.photos.order("created_at #{order}").last
 
     if last_image
-      key = order == "desc" ? "max_timestamp" : "min_timestamp"
-      options[key] = last_image.created_at.to_i
+      if order == "desc"
+        options[:max_timestamp] = last_image.created_at.to_i
+      else
+        options[:min_timestamp] = last_image.created_at.to_i + 1
+      end
     end
 
     media = Instagram.client(:access_token => user.oauth_token).user_recent_media(options)
@@ -23,8 +26,14 @@ class UserOnboardJob < Struct.new(:user_id, :order)
 
     user.save
     
-    if media.size == MAX_IMAGES
-      Delayed::Job.enqueue self, run_at: Time.now + 1.second
+    if order == 'desc' && media.size < MAX_IMAGES
+      job = UserOnboardJob.new(user_id, 'asc')
+    else
+      job = self
     end
+    
+    queue_time = job.order == "desc" ? 1.second : 3.minutes
+
+    Delayed::Job.enqueue job, run_at: Time.now + queue_time
   end
 end
