@@ -1,6 +1,7 @@
 //= require_tree "./views"
 
 //= require "utils"
+//= require "form"
 //= require "streamer"
 //= require "previewer"
 //= require "cart"
@@ -11,3 +12,4 @@ document.addEventListener "DOMContentLoaded", ->
   Previewer.load()
   Cart.load()
   SlideShow.load()
+  Form.load()
