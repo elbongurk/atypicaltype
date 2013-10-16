@@ -3,9 +3,6 @@ AtypicalType::Application.routes.draw do
   get 'sign_in', to: 'o_auth#connect'
   get 'sign_out', to: 'o_auth#disconnect'
   
-  get 'oauth/pubsubhubub', to: 'o_auth#subscribe'
-  post 'oauth/pubsubhubub', to: 'o_auth#realtime'
-
   resources :photos, only: [:index] do
     resources :variants, only: [:show]
     resources :products, only: [:show, :index]
