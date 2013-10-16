@@ -27,7 +27,7 @@ class Renderer
     # TODO: We could possibly store the pixel values from stream into memcached
     #       We would need to test obviously how fast that is vs just using stream
 
-    context.render(bright: 30, contrast: 30)
+    context.render
 
     ird, iwr = IO.pipe
     ord, owr = IO.pipe
@@ -121,8 +121,7 @@ class Renderer
   end
 
   def stream_cmd
-    "convert #{self.url} -auto-level gram:- | stream gram:- -map i -storage-type char -"
-    "stream -map i -storage-type char #{self.url} -"
+    "convert #{self.url} -contrast-stretch 10% gray:-"
   end
 
   def gs_cmd
@@ -133,7 +132,7 @@ class Renderer
            when :pdf
              "-sDEVICE=pdfwrite -dSubsetFonts=true "
            when :png
-             "-sDEVICE=pngalpha "#-dTextAlphaBits=2 -dDownScaleFactor=2 -r144 "
+             "-sDEVICE=pngalpha "
            end
     cmd << "-sOutputFile=- -"
   end
