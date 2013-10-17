@@ -8,8 +8,8 @@ class OrderFulfillmentJob < Struct.new(:order_id)
   def perform
     order = Order.find(order_id)
     
-    items = order.line_items.includes(:product).map do |line_item|
-      url = canvas_photo_url(line_item.photo_id, format: :pdf, bright: line_item.brightness, contrast: line_item.contrast)
+    items = order.line_items.map do |line_item|
+      url = photo_variant_url(line_item.photo, line_item.variant, format: :png)
 
       # FIXME: Hack due to the fact that the Printful API doesn't have a sandbox and requires a live URL
       if Rails.env.development?
@@ -17,10 +17,10 @@ class OrderFulfillmentJob < Struct.new(:order_id)
       end
 
       item = {
-        product: line_item.product.number,
+        product: line_item.variant.number,
         imageUrl: url,
-        sku: line_item.id,
-        name: line_item.photo_id,
+        sku: line_item.variant.sku,
+        name: line_item.variant.product.description,
         quantity: line_item.quantity
       }
     end
