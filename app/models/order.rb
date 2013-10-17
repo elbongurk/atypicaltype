@@ -20,7 +20,13 @@ class Order < ActiveRecord::Base
   end
 
   def number
-    self.id + 60 if self.id
+    if Rails.env.staging?
+      self.id + 500
+    elsif Rails.env.production?
+      self.id + 1000
+    else
+      self.id
+    end
   end
 
   def country
